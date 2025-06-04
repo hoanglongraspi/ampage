@@ -8,24 +8,23 @@ export const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '#home' },
-    { name: 'AI Solutions', href: '#services' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Collaborators', href: '#collaborators' },
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-white/95 backdrop-blur-md shadow-sm z-50 border-b border-pink-100">
+    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-xl shadow-lg z-50 border-b border-pink-500/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-pink-600 to-rose-600 p-2 rounded-xl">
+            <div className="bg-gradient-to-r from-pink-500 to-violet-600 p-2 rounded-lg">
               <Brain className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
                 Auspex Medix LLC
               </h1>
-              <p className="text-sm text-slate-600">AI-Powered Healthcare Intelligence</p>
+              <p className="text-sm text-gray-400">AI Healthcare Intelligence</p>
             </div>
           </div>
 
@@ -34,7 +33,7 @@ export const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-slate-700 hover:text-pink-600 transition-colors duration-200 font-medium"
+                className="text-gray-300 hover:text-pink-400 transition-colors duration-200 font-medium"
               >
                 {item.name}
               </a>
@@ -42,13 +41,13 @@ export const Header = () => {
           </nav>
 
           <div className="hidden md:flex">
-            <Button className="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white">
-              Experience AI
+            <Button className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white border-0">
+              AI Demo
             </Button>
           </div>
 
           <button
-            className="md:hidden"
+            className="md:hidden text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -56,20 +55,20 @@ export const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-pink-100">
+          <div className="md:hidden py-4 border-t border-pink-500/20">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-slate-700 hover:text-pink-600 transition-colors duration-200 font-medium"
+                  className="text-gray-300 hover:text-pink-400 transition-colors duration-200 font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button className="bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white w-full mt-4">
-                Experience AI
+              <Button className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white w-full mt-4 border-0">
+                AI Demo
               </Button>
             </nav>
           </div>
