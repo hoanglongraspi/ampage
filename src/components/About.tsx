@@ -6,28 +6,28 @@ export const About = () => {
   const values = [
     {
       icon: Award,
-      title: "Excellence",
-      description: "Committed to delivering the highest quality AI solutions that exceed healthcare standards."
+      title: "AI Excellence",
+      description: "Pioneering the most advanced AI technologies that set new standards in healthcare intelligence."
     },
     {
       icon: Users,
-      title: "Collaboration",
-      description: "Working hand-in-hand with medical professionals to create meaningful healthcare innovations."
+      title: "Human-AI Partnership",
+      description: "Creating seamless collaboration between medical professionals and artificial intelligence systems."
     },
     {
       icon: Target,
-      title: "Precision",
-      description: "Developing precise, reliable AI tools that healthcare providers can trust for critical decisions."
+      title: "Precision AI",
+      description: "Developing ultra-precise AI models that healthcare providers can trust for critical medical decisions."
     },
     {
       icon: Lightbulb,
-      title: "Innovation",
-      description: "Pioneering breakthrough technologies that revolutionize patient care and medical outcomes."
+      title: "AI Innovation",
+      description: "Breakthrough artificial intelligence technologies that redefine what's possible in patient care."
     }
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-blue-50">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 to-pink-50">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
@@ -35,23 +35,23 @@ export const About = () => {
               About Auspex Medix LLC
             </h2>
             <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-              Founded with a vision to transform healthcare through artificial intelligence, 
-              Auspex Medix LLC stands at the forefront of medical technology innovation. 
-              Our team of world-class engineers, data scientists, and medical professionals 
-              work together to create AI solutions that save lives and improve patient outcomes.
+              At the intersection of artificial intelligence and healthcare, Auspex Medix LLC 
+              is pioneering the next generation of medical AI solutions. Our team of AI researchers, 
+              machine learning engineers, and medical professionals collaborate to create intelligent 
+              systems that augment human expertise and save lives.
             </p>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              We believe that advanced AI should augment human expertise, not replace it. 
-              Our solutions are designed to empower healthcare professionals with unprecedented 
-              insights and capabilities, enabling them to provide the best possible care for their patients.
+              We believe AI should amplify human intelligence, not replace it. Our sophisticated 
+              AI models are designed to work alongside healthcare professionals, providing 
+              unprecedented insights and capabilities that enhance decision-making and patient outcomes.
             </p>
             
-            <div className="bg-white rounded-2xl p-6 shadow-lg border border-blue-100">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our Mission</h3>
+            <div className="bg-white rounded-2xl p-6 shadow-lg border border-pink-100">
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">Our AI Mission</h3>
               <p className="text-slate-700 leading-relaxed">
-                To democratize access to advanced AI healthcare solutions, making cutting-edge 
-                medical technology available to healthcare providers worldwide, ultimately 
-                improving patient outcomes and saving lives.
+                To democratize access to world-class AI healthcare technology, making intelligent 
+                medical solutions available globally while ensuring AI serves humanity's health 
+                and wellbeing through ethical, transparent, and innovative approaches.
               </p>
             </div>
           </div>
@@ -60,9 +60,9 @@ export const About = () => {
             {values.map((value, index) => (
               <div 
                 key={index}
-                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-blue-100"
+                className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-pink-100"
               >
-                <div className="bg-gradient-to-r from-blue-500 to-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
+                <div className="bg-gradient-to-r from-pink-500 to-rose-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4">
                   <value.icon className="h-6 w-6 text-white" />
                 </div>
                 <h4 className="text-xl font-bold text-slate-900 mb-3">{value.title}</h4>

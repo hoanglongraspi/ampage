@@ -12,10 +12,10 @@ export const Contact = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Get in Touch
+            Connect with Our AI Team
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Ready to transform your healthcare practice with AI? Let's discuss how we can help you achieve better patient outcomes.
+            Ready to harness AI for your healthcare practice? Let's explore how our intelligent solutions can transform your patient care.
           </p>
         </div>
 
@@ -23,7 +23,7 @@ export const Contact = () => {
           <div className="lg:col-span-2">
             <Card className="shadow-xl border-0">
               <CardHeader>
-                <CardTitle className="text-2xl font-bold text-slate-900">Send us a Message</CardTitle>
+                <CardTitle className="text-2xl font-bold text-slate-900">Discuss AI Solutions</CardTitle>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -43,22 +43,22 @@ export const Contact = () => {
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Organization</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">Healthcare Organization</label>
                   <Input placeholder="Your Hospital/Clinic Name" className="w-full" />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-slate-700 mb-2">AI Requirements</label>
                   <Textarea 
-                    placeholder="Tell us about your healthcare AI needs..." 
+                    placeholder="Tell us about your healthcare AI needs and challenges..." 
                     rows={6}
                     className="w-full"
                   />
                 </div>
                 
-                <Button className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-lg py-3">
+                <Button className="w-full bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 text-white text-lg py-3">
                   <Send className="mr-2 h-5 w-5" />
-                  Send Message
+                  Send AI Inquiry
                 </Button>
               </CardContent>
             </Card>
@@ -68,12 +68,12 @@ export const Contact = () => {
             <Card className="shadow-xl border-0">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-gradient-to-r from-blue-500 to-indigo-600 p-3 rounded-xl">
+                  <div className="bg-gradient-to-r from-pink-500 to-rose-600 p-3 rounded-xl">
                     <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Email</h3>
-                    <p className="text-slate-600">contact@auspexmedix.com</p>
+                    <h3 className="font-semibold text-slate-900">AI Inquiries</h3>
+                    <p className="text-slate-600">ai@auspexmedix.com</p>
                   </div>
                 </div>
               </CardContent>
@@ -82,11 +82,11 @@ export const Contact = () => {
             <Card className="shadow-xl border-0">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-3 rounded-xl">
+                  <div className="bg-gradient-to-r from-rose-500 to-pink-600 p-3 rounded-xl">
                     <Phone className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Phone</h3>
+                    <h3 className="font-semibold text-slate-900">AI Consultations</h3>
                     <p className="text-slate-600">+1 (555) 123-4567</p>
                   </div>
                 </div>
@@ -96,27 +96,27 @@ export const Contact = () => {
             <Card className="shadow-xl border-0">
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-gradient-to-r from-purple-500 to-pink-600 p-3 rounded-xl">
+                  <div className="bg-gradient-to-r from-pink-600 to-rose-700 p-3 rounded-xl">
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">Office</h3>
+                    <h3 className="font-semibold text-slate-900">AI Lab</h3>
                     <p className="text-slate-600">
-                      123 Healthcare Innovation Blvd<br />
-                      Medical District, NY 10001
+                      123 AI Innovation Center<br />
+                      Medical AI District, NY 10001
                     </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 text-white">
-              <h3 className="text-xl font-bold mb-3">Schedule a Demo</h3>
+            <div className="bg-gradient-to-r from-pink-600 to-rose-600 rounded-xl p-6 text-white">
+              <h3 className="text-xl font-bold mb-3">Experience AI Demo</h3>
               <p className="mb-4 opacity-90">
-                See our AI solutions in action. Book a personalized demo with our healthcare AI specialists.
+                Witness our AI solutions in action. Schedule a live demonstration with our AI specialists.
               </p>
-              <Button variant="secondary" className="w-full bg-white text-blue-600 hover:bg-blue-50">
-                Book Demo Call
+              <Button variant="secondary" className="w-full bg-white text-pink-600 hover:bg-pink-50">
+                Book AI Demo
               </Button>
             </div>
           </div>

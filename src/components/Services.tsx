@@ -17,57 +17,57 @@ export const Services = () => {
   const services = [
     {
       icon: Brain,
-      title: "AI Diagnostics",
-      description: "Advanced machine learning algorithms for accurate medical diagnosis and early disease detection.",
-      color: "from-blue-500 to-blue-600"
-    },
-    {
-      icon: Scan,
-      title: "Medical Imaging AI",
-      description: "Revolutionary image analysis for X-rays, MRIs, CT scans with unparalleled precision.",
-      color: "from-indigo-500 to-indigo-600"
-    },
-    {
-      icon: Activity,
-      title: "Patient Monitoring",
-      description: "Real-time AI-powered patient monitoring systems for critical care and remote health tracking.",
-      color: "from-purple-500 to-purple-600"
-    },
-    {
-      icon: Database,
-      title: "Health Data Analytics",
-      description: "Comprehensive analysis of patient data to identify trends and optimize treatment protocols.",
-      color: "from-cyan-500 to-cyan-600"
-    },
-    {
-      icon: Shield,
-      title: "Predictive Healthcare",
-      description: "Predictive models to prevent health complications and enable proactive medical interventions.",
-      color: "from-green-500 to-green-600"
-    },
-    {
-      icon: Clock,
-      title: "Workflow Optimization",
-      description: "AI-driven solutions to streamline hospital operations and reduce administrative burden.",
-      color: "from-orange-500 to-orange-600"
-    },
-    {
-      icon: Users,
-      title: "Telemedicine AI",
-      description: "Enhanced remote consultation capabilities with AI-assisted diagnosis and treatment recommendations.",
+      title: "AI Diagnostic Intelligence",
+      description: "Deep learning algorithms that analyze medical data with superhuman precision for early disease detection.",
       color: "from-pink-500 to-pink-600"
     },
     {
+      icon: Scan,
+      title: "Medical AI Imaging",
+      description: "Computer vision AI that interprets X-rays, MRIs, and CT scans with unmatched accuracy and speed.",
+      color: "from-rose-500 to-rose-600"
+    },
+    {
+      icon: Activity,
+      title: "Smart Patient Monitoring",
+      description: "AI-powered continuous monitoring systems that predict health events before they occur.",
+      color: "from-pink-600 to-rose-600"
+    },
+    {
+      icon: Database,
+      title: "Healthcare AI Analytics",
+      description: "Machine learning models that extract actionable insights from complex medical datasets.",
+      color: "from-rose-500 to-pink-600"
+    },
+    {
+      icon: Shield,
+      title: "Predictive AI Models",
+      description: "Advanced AI algorithms that forecast health risks and enable proactive intervention strategies.",
+      color: "from-pink-500 to-rose-500"
+    },
+    {
+      icon: Clock,
+      title: "AI Workflow Automation",
+      description: "Intelligent automation that streamlines healthcare operations and reduces manual workload.",
+      color: "from-rose-600 to-pink-600"
+    },
+    {
+      icon: Users,
+      title: "AI-Enhanced Telemedicine",
+      description: "Smart virtual consultations powered by AI for enhanced remote patient care and diagnosis.",
+      color: "from-pink-600 to-pink-700"
+    },
+    {
       icon: BarChart3,
-      title: "Clinical Research",
-      description: "Accelerate clinical trials and research with AI-powered data analysis and patient matching.",
-      color: "from-violet-500 to-violet-600"
+      title: "AI Clinical Research",
+      description: "Accelerated research through AI-driven data analysis, patient matching, and clinical trial optimization.",
+      color: "from-rose-600 to-rose-700"
     },
     {
       icon: Microscope,
-      title: "Drug Discovery",
-      description: "AI-accelerated pharmaceutical research and development for faster drug discovery processes.",
-      color: "from-teal-500 to-teal-600"
+      title: "AI Drug Discovery",
+      description: "Revolutionary AI models that accelerate pharmaceutical development and molecular discovery.",
+      color: "from-pink-700 to-rose-700"
     }
   ];
 
@@ -76,10 +76,10 @@ export const Services = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-            Our AI Healthcare Solutions
+            AI Healthcare Solutions
           </h2>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-            Comprehensive artificial intelligence solutions designed to transform every aspect of healthcare delivery
+            Cutting-edge artificial intelligence technologies designed to revolutionize healthcare through intelligent automation and predictive analytics
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export const Services = () => {
                 <div className={`w-16 h-16 bg-gradient-to-r ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                   <service.icon className="h-8 w-8 text-white" />
                 </div>
-                <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                <CardTitle className="text-xl font-bold text-slate-900 group-hover:text-pink-600 transition-colors">
                   {service.title}
                 </CardTitle>
               </CardHeader>
