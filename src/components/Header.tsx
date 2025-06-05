@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Brain } from 'lucide-react';
+import { Menu, X, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -10,23 +10,26 @@ export const Header = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
     { name: 'Projects', href: '/projects' },
+    { name: 'News', href: '/news' },
     { name: 'Collaborators', href: '/collaborators' },
+    
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-xl shadow-lg z-50 border-b border-pink-500/20">
+    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-xl shadow-lg z-50 border-b border-blue-500/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-pink-500 to-violet-600 p-2 rounded-lg">
-              <Brain className="h-8 w-8 text-white" />
+            <div className="bg-gradient-to-r from-blue-500 to-teal-600 p-2 rounded-lg">
+              <Heart className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
                 Auspex Medix LLC
               </h1>
-              <p className="text-sm text-gray-400">AI Healthcare Intelligence</p>
+              <p className="text-sm text-gray-400">Medical Technology Innovation</p>
             </div>
           </Link>
 
@@ -37,8 +40,8 @@ export const Header = () => {
                 to={item.href}
                 className={`transition-colors duration-200 font-medium ${
                   location.pathname === item.href 
-                    ? 'text-pink-400' 
-                    : 'text-gray-300 hover:text-pink-400'
+                    ? 'text-blue-400' 
+                    : 'text-gray-300 hover:text-blue-400'
                 }`}
               >
                 {item.name}
@@ -47,8 +50,8 @@ export const Header = () => {
           </nav>
 
           <div className="hidden md:flex">
-            <Button className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white border-0">
-              AI Demo
+            <Button className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white border-0" onClick={() => window.location.href = '/contact'}>
+              Contact Us
             </Button>
           </div>
 
@@ -61,7 +64,7 @@ export const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-pink-500/20">
+          <div className="md:hidden py-4 border-t border-blue-500/20">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -69,16 +72,16 @@ export const Header = () => {
                   to={item.href}
                   className={`transition-colors duration-200 font-medium ${
                     location.pathname === item.href 
-                      ? 'text-pink-400' 
-                      : 'text-gray-300 hover:text-pink-400'
+                      ? 'text-blue-400' 
+                      : 'text-gray-300 hover:text-blue-400'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
-              <Button className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white w-full mt-4 border-0">
-                AI Demo
+              <Button className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white w-full mt-4 border-0">
+                Contact Us
               </Button>
             </nav>
           </div>

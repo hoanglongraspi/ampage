@@ -71,18 +71,30 @@ const Collaborators = () => {
   const collaborationAreas = [
     {
       title: "Research & Development",
-      description: "Joint AI research initiatives with leading academic institutions",
-      points: ["Algorithm development", "Clinical trials", "Data analysis", "Publication collaboration"]
+      description: "Joint medical research initiatives with leading academic institutions",
+      points: ["Algorithm development", "Clinical trials", "Data analysis", "Publication collaboration"],
+      icon: Microscope,
+      color: "from-blue-500 to-teal-600",
+      borderColor: "border-blue-500/30",
+      iconBg: "bg-blue-500/20"
     },
     {
       title: "Clinical Implementation",
-      description: "Real-world deployment of AI solutions in healthcare settings",
-      points: ["Pilot programs", "Staff training", "System integration", "Performance monitoring"]
+      description: "Real-world deployment of medical solutions in healthcare settings",
+      points: ["Pilot programs", "Staff training", "System integration", "Performance monitoring"],
+      icon: Hospital,
+      color: "from-green-500 to-emerald-600",
+      borderColor: "border-green-500/30",
+      iconBg: "bg-green-500/20"
     },
     {
       title: "Technology Transfer",
       description: "Knowledge sharing and technology commercialization",
-      points: ["Patent licensing", "Technical consultation", "Platform integration", "Best practices"]
+      points: ["Patent licensing", "Technical consultation", "Platform integration", "Best practices"],
+      icon: Globe,
+      color: "from-purple-500 to-violet-600",
+      borderColor: "border-purple-500/30",
+      iconBg: "bg-purple-500/20"
     }
   ];
 
@@ -179,16 +191,23 @@ const Collaborators = () => {
               {collaborationAreas.map((area, index) => (
                 <Card 
                   key={index} 
-                  className="bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-gray-700 hover:border-pink-500/50 transition-all duration-300"
+                  className={`group bg-gray-900/60 backdrop-blur-sm border ${area.borderColor} hover:border-opacity-70 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 relative overflow-hidden`}
                 >
-                  <CardContent className="p-8">
-                    <h3 className="text-2xl font-bold text-white mb-4">{area.title}</h3>
+                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800/30 to-gray-900/50"></div>
+                  <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${area.color} opacity-10 rounded-full -translate-y-16 translate-x-16`}></div>
+                  <CardContent className="p-8 relative z-10">
+                    <div className={`w-16 h-16 ${area.iconBg} backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border ${area.borderColor}`}>
+                      <area.icon className={`h-8 w-8 ${area.color.includes('blue') ? 'text-blue-400' : area.color.includes('green') ? 'text-green-400' : 'text-purple-400'}`} />
+                    </div>
+                    <h3 className={`text-2xl font-bold mb-4 group-hover:${area.color.includes('blue') ? 'text-blue-400' : area.color.includes('green') ? 'text-green-400' : 'text-purple-400'} transition-colors text-white`}>
+                      {area.title}
+                    </h3>
                     <p className="text-gray-300 mb-6 leading-relaxed">{area.description}</p>
-                    <ul className="space-y-2">
+                    <ul className="space-y-3">
                       {area.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="flex items-center text-gray-400">
-                          <div className="w-2 h-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full mr-3"></div>
-                          {point}
+                        <li key={pointIndex} className="flex items-center text-gray-300">
+                          <div className={`w-2 h-2 bg-gradient-to-r ${area.color} rounded-full mr-3 flex-shrink-0`}></div>
+                          <span className="text-sm">{point}</span>
                         </li>
                       ))}
                     </ul>

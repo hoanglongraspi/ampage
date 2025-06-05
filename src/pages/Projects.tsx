@@ -1,77 +1,95 @@
-
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Eye, Volume2, Cpu, ArrowRight, Brain, Heart, Shield } from 'lucide-react';
+import { Activity, Volume2, Scan, Mic, Smile, ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Projects = () => {
   const projects = [
     {
-      icon: Cpu,
-      title: "mmware",
-      description: "Advanced middleware solutions for seamless AI integration in healthcare systems",
-      fullDescription: "Our mmware platform represents a breakthrough in healthcare AI middleware, providing a robust, scalable infrastructure that seamlessly connects diverse medical systems with cutting-edge AI algorithms. This platform enables real-time data processing, ensures HIPAA compliance, and facilitates the deployment of machine learning models across hospital networks.",
+      icon: Activity,
+      title: "Physical & Occupational Therapy (PT/OT)",
+      technologies: "Mobile Rehabilitation (mRehab), Motion Analysis, App-based Therapy Tools",
+      description: "Developing digital tools and systems to enhance physical therapy and rehabilitation outcomes through mobile health (mHealth) applications.",
+      fullDescription: "Our PT/OT platform revolutionizes rehabilitation through advanced mobile health solutions. We develop comprehensive digital ecosystems that integrate motion analysis, real-time biofeedback, and personalized therapy protocols. Our mRehab applications enable patients to continue their therapy journey at home while maintaining clinical oversight and progress tracking.",
       features: [
-        "Real-time medical data processing",
-        "HIPAA-compliant security protocols",
-        "Scalable cloud architecture",
-        "API-first integration design",
-        "Advanced analytics dashboard"
+        "Real-time motion capture and analysis",
+        "Personalized therapy protocol generation",
+        "Progress tracking and analytics",
+        "Remote patient monitoring",
+        "Gamified rehabilitation exercises",
+        "Clinical data integration"
       ],
-      color: "from-pink-500 to-pink-600",
-      borderColor: "border-pink-500/30"
+      color: "from-blue-500 to-blue-600",
+      borderColor: "border-blue-500/30"
     },
     {
       icon: Volume2,
-      title: "Audio Detection",
-      description: "Real-time acoustic analysis for medical diagnostics and patient monitoring",
-      fullDescription: "Our AI-powered audio detection system revolutionizes medical diagnostics through advanced acoustic analysis. Using deep learning algorithms, we can detect early signs of respiratory conditions, heart abnormalities, and neurological disorders through voice patterns and breathing sounds.",
+      title: "Audiology (AUD)",
+      technologies: "Audio Processing, Vestibular Diagnostics, EEG Integration",
+      description: "Creating assistive hearing systems, diagnosing vestibular disorders like BPPV, and exploring brain-auditory interactions using EEG.",
+      fullDescription: "Our audiology solutions combine advanced signal processing with neural monitoring to create comprehensive hearing and balance assessment tools. We integrate EEG data with audio processing to understand brain-auditory interactions, enabling more precise diagnoses and personalized treatment plans for hearing loss and vestibular disorders.",
       features: [
-        "Respiratory pattern analysis",
-        "Heart sound classification",
-        "Voice biomarker detection",
-        "Real-time monitoring alerts",
-        "Multi-language support"
+        "Advanced audio signal processing",
+        "Vestibular disorder diagnostics",
+        "EEG-audio correlation analysis",
+        "BPPV detection algorithms",
+        "Hearing aid optimization",
+        "Balance assessment tools"
       ],
-      color: "from-violet-500 to-violet-600",
-      borderColor: "border-violet-500/30"
+      color: "from-green-500 to-green-600",
+      borderColor: "border-green-500/30"
     },
     {
-      icon: Eye,
-      title: "Computer Vision",
-      description: "AI-powered visual analysis for medical imaging and diagnostic accuracy",
-      fullDescription: "Our computer vision technology leverages state-of-the-art convolutional neural networks to analyze medical images with superhuman accuracy. From detecting tumors in radiology scans to analyzing retinal images for diabetic complications, our AI sees what human eyes might miss.",
+      icon: Scan,
+      title: "Wound Healing & Diabetic Foot Care",
+      technologies: "Multispectral Imaging (MSI), mmWave Imaging",
+      description: "Innovating non-invasive diagnostic technologies for chronic wounds and diabetic foot ulcers, enhancing early detection and monitoring.",
+      fullDescription: "Our wound care technology utilizes cutting-edge multispectral and mmWave imaging to provide non-invasive, comprehensive wound assessment. These systems enable early detection of complications, monitor healing progress, and predict treatment outcomes, particularly crucial for diabetic patients who face higher risks of foot complications.",
       features: [
-        "Radiology scan analysis",
-        "Pathology slide examination",
-        "Retinal disease detection",
-        "Skin lesion classification",
-        "3D medical imaging processing"
+        "Multispectral wound imaging",
+        "mmWave tissue penetration analysis",
+        "Automated wound measurement",
+        "Healing progress tracking",
+        "Infection risk assessment",
+        "Diabetic foot monitoring"
       ],
-      color: "from-pink-600 to-violet-600",
-      borderColor: "border-pink-600/30"
-    }
-  ];
-
-  const additionalProjects = [
-    {
-      icon: Brain,
-      title: "Neural Interface",
-      description: "Brain-computer interfaces for neurological rehabilitation",
-      color: "from-violet-600 to-purple-600"
+      color: "from-orange-500 to-orange-600",
+      borderColor: "border-orange-500/30"
     },
     {
-      icon: Heart,
-      title: "Cardiac AI",
-      description: "Predictive analytics for cardiovascular health monitoring",
-      color: "from-pink-500 to-red-500"
+      icon: Mic,
+      title: "Speech-Language Pathology (SLP)",
+      technologies: "Ultrasound Imaging, EEG, AI Speech Analysis",
+      description: "Advancing speech therapy through real-time imaging, neural data analysis, and AI-based feedback systems for both clinical and at-home use.",
+      fullDescription: "Our SLP technology platform integrates ultrasound imaging with EEG monitoring and AI-powered speech analysis to provide comprehensive speech therapy solutions. This multimodal approach enables real-time visualization of tongue movements, neural activity monitoring, and intelligent feedback systems for both clinical settings and home-based therapy.",
+      features: [
+        "Real-time ultrasound tongue imaging",
+        "EEG-based neural monitoring",
+        "AI-powered speech pattern analysis",
+        "Automated pronunciation feedback",
+        "Progress tracking algorithms",
+        "Telehealth therapy support"
+      ],
+      color: "from-purple-500 to-purple-600",
+      borderColor: "border-purple-500/30"
     },
     {
-      icon: Shield,
-      title: "MedGuard",
-      description: "AI-powered cybersecurity for healthcare infrastructure",
-      color: "from-blue-500 to-violet-500"
+      icon: Smile,
+      title: "Dentistry",
+      technologies: "Oral Imaging, AI Diagnostics, 3D Analysis",
+      description: "Building intelligent tools for oral health screening and orthodontic assessments, leveraging AI for early detection and precision diagnostics.",
+      fullDescription: "Our dental technology solutions combine advanced oral imaging with AI-powered diagnostic tools to revolutionize dental care. From early caries detection to comprehensive orthodontic treatment planning, our 3D analysis systems provide dentists with unprecedented insight into oral health conditions and treatment outcomes.",
+      features: [
+        "3D oral cavity reconstruction",
+        "AI-powered caries detection",
+        "Orthodontic treatment planning",
+        "Periodontal disease assessment",
+        "Treatment outcome prediction",
+        "Digital smile design"
+      ],
+      color: "from-teal-500 to-teal-600",
+      borderColor: "border-teal-500/30"
     }
   ];
 
@@ -84,11 +102,11 @@ const Projects = () => {
           <div className="text-center mb-20">
             <h1 className="text-6xl md:text-7xl font-bold mb-8">
               <span className="bg-gradient-to-r from-pink-400 to-violet-400 bg-clip-text text-transparent">
-                AI Projects
+                Medical Technology Projects
               </span>
             </h1>
             <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
-              Pioneering the future of healthcare through revolutionary AI technologies
+              Advancing healthcare through innovative medical technologies and digital solutions across specialized therapeutic areas
             </p>
           </div>
 
@@ -105,9 +123,15 @@ const Projects = () => {
                       <div className={`w-24 h-24 bg-gradient-to-r ${project.color} rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500`}>
                         <project.icon className="h-12 w-12 text-white" />
                       </div>
-                      <h3 className="text-4xl font-bold text-white mb-6 group-hover:text-pink-400 transition-colors">
+                      <h3 className="text-4xl font-bold text-white mb-4 group-hover:text-pink-400 transition-colors">
                         {project.title}
                       </h3>
+                      <div className="mb-6">
+                        <p className="text-lg font-medium text-pink-400 mb-3">Technologies:</p>
+                        <p className="text-gray-400 leading-relaxed mb-6">
+                          {project.technologies}
+                        </p>
+                      </div>
                       <p className="text-xl text-gray-300 leading-relaxed mb-8">
                         {project.fullDescription}
                       </p>
@@ -131,35 +155,6 @@ const Projects = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Additional Projects */}
-          <div className="mb-12">
-            <h2 className="text-4xl font-bold text-center mb-12">
-              <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
-                Emerging Technologies
-              </span>
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {additionalProjects.map((project, index) => (
-                <Card 
-                  key={index} 
-                  className="group bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 hover:-translate-y-4 border border-gray-600 hover:border-pink-500/50"
-                >
-                  <CardContent className="p-8 text-center">
-                    <div className={`w-20 h-20 bg-gradient-to-r ${project.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                      <project.icon className="h-10 w-10 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-pink-400 transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed">
-                      {project.description}
-                    </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </div>
       </section>

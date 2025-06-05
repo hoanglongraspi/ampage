@@ -14,21 +14,22 @@ export const Footer = () => {
               </div>
               <div>
                 <h3 className="text-2xl font-bold text-white">Auspex Medix LLC</h3>
-                <p className="text-gray-400">AI Healthcare Intelligence</p>
+                <p className="text-gray-400">Medical Technology Innovation</p>
               </div>
             </div>
             <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
-              Pioneering the future of healthcare through advanced artificial intelligence and cutting-edge technology solutions.
+              Advancing healthcare through innovative medical technologies across specialized therapeutic areas including PT/OT, audiology, wound care, speech therapy, and dentistry.
             </p>
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">AI Technologies</h4>
+            <h4 className="text-lg font-semibold text-white mb-4">Medical Technologies</h4>
             <ul className="space-y-3 text-gray-300">
-              <li><span className="text-pink-400">•</span> mmware Solutions</li>
-              <li><span className="text-violet-400">•</span> Audio Detection</li>
-              <li><span className="text-pink-400">•</span> Computer Vision</li>
-              <li><span className="text-violet-400">•</span> Healthcare AI</li>
+              <li><span className="text-blue-400">•</span> Physical & Occupational Therapy</li>
+              <li><span className="text-green-400">•</span> Audiology Solutions</li>
+              <li><span className="text-orange-400">•</span> Wound Healing & Diabetic Care</li>
+              <li><span className="text-purple-400">•</span> Speech-Language Pathology</li>
+              <li><span className="text-teal-400">•</span> Dental Diagnostics</li>
             </ul>
           </div>
 
@@ -37,7 +38,7 @@ export const Footer = () => {
             <div className="space-y-3 text-gray-300 mb-6">
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-pink-400" />
-                <span>ai@auspexmedix.com</span>
+                <span>contact@auspexmedix.com</span>
               </div>
             </div>
             <div className="flex space-x-4">
