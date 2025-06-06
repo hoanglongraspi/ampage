@@ -72,6 +72,7 @@ export const Hero = () => {
               </Button>
             </div>
           </div>
+          
 
           {/* Right Column - Hero Image */}
           <div className="relative order-1 lg:order-2">
