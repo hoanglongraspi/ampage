@@ -113,10 +113,10 @@ const News = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h1 className="text-6xl md:text-7xl font-bold mb-8">
@@ -124,13 +124,13 @@ const News = () => {
                 Latest News
               </span>
             </h1>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+            <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
               Stay updated with the latest breakthroughs in medical technology and research from Auspex Medix LLC
             </p>
           </div>
 
           {/* Featured News */}
-          <Card className="mb-16 bg-gray-900/50 backdrop-blur-sm border-pink-500/30 overflow-hidden group hover:bg-gray-800/70 transition-all duration-500">
+          <Card className="mb-16 bg-card/50 backdrop-blur-sm border-pink-500/30 overflow-hidden group hover:bg-card/70 transition-all duration-500">
             <CardContent className="p-0">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
                 <div className="bg-gradient-to-br from-pink-600/20 to-violet-600/20 p-12 flex items-center">
@@ -139,13 +139,13 @@ const News = () => {
                       {getCategoryIcon(featuredNews.category)}
                       <span className="ml-2">{featuredNews.category}</span>
                     </Badge>
-                    <h2 className="text-4xl font-bold text-white mb-6 group-hover:text-pink-400 transition-colors">
+                    <h2 className="text-4xl font-bold text-foreground mb-6 group-hover:text-pink-400 transition-colors">
                       {featuredNews.title}
                     </h2>
-                    <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                    <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                       {featuredNews.excerpt}
                     </p>
-                    <div className="flex items-center text-gray-400 mb-6 space-x-6">
+                    <div className="flex items-center text-muted-foreground mb-6 space-x-6">
                       <div className="flex items-center">
                         <Calendar className="h-4 w-4 mr-2" />
                         {formatDate(featuredNews.date)}
@@ -192,7 +192,7 @@ const News = () => {
             {newsArticles.map((article, index) => (
                              <Card 
                  key={index}
-                 className="group bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 hover:-translate-y-2 border border-gray-600 hover:border-pink-500/50 cursor-pointer overflow-hidden"
+                 className="group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-500 hover:-translate-y-2 border hover:border-pink-500/50 cursor-pointer overflow-hidden"
                >
                  <div className="relative h-48 overflow-hidden">
                    <img 
@@ -214,15 +214,15 @@ const News = () => {
                    </div>
                  </div>
                  <CardHeader className="pb-4">
-                   <h3 className="text-xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors line-clamp-2">
+                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-pink-400 transition-colors line-clamp-2">
                      {article.title}
                    </h3>
                  </CardHeader>
                 <CardContent>
-                  <p className="text-gray-300 leading-relaxed mb-6 line-clamp-3">
+                  <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3">
                     {article.excerpt}
                   </p>
-                  <div className="flex items-center text-gray-400 text-sm mb-4 space-x-4">
+                  <div className="flex items-center text-muted-foreground text-sm mb-4 space-x-4">
                     <div className="flex items-center">
                       <Calendar className="h-3 w-3 mr-1" />
                       {formatDate(article.date)}
@@ -230,7 +230,7 @@ const News = () => {
                     <span>{article.readTime}</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center text-gray-400 text-sm">
+                    <div className="flex items-center text-muted-foreground text-sm">
                       <User className="h-3 w-3 mr-1" />
                       {article.author}
                     </div>

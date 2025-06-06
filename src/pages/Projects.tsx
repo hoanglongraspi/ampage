@@ -94,10 +94,10 @@ const Projects = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h1 className="text-6xl md:text-7xl font-bold mb-8">
@@ -105,7 +105,7 @@ const Projects = () => {
                 Medical Technology Projects
               </span>
             </h1>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+            <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
               Advancing healthcare through innovative medical technologies and digital solutions across specialized therapeutic areas
             </p>
           </div>
@@ -115,7 +115,7 @@ const Projects = () => {
             {projects.map((project, index) => (
               <Card 
                 key={index} 
-                className={`group bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 border ${project.borderColor} overflow-hidden`}
+                className={`group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-500 border ${project.borderColor} overflow-hidden`}
               >
                 <CardContent className="p-12">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -123,16 +123,16 @@ const Projects = () => {
                       <div className={`w-24 h-24 bg-gradient-to-r ${project.color} rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500`}>
                         <project.icon className="h-12 w-12 text-white" />
                       </div>
-                      <h3 className="text-4xl font-bold text-white mb-4 group-hover:text-pink-400 transition-colors">
+                      <h3 className="text-4xl font-bold text-foreground mb-4 group-hover:text-pink-400 transition-colors">
                         {project.title}
                       </h3>
                       <div className="mb-6">
                         <p className="text-lg font-medium text-pink-400 mb-3">Technologies:</p>
-                        <p className="text-gray-400 leading-relaxed mb-6">
+                        <p className="text-muted-foreground leading-relaxed mb-6">
                           {project.technologies}
                         </p>
                       </div>
-                      <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                      <p className="text-xl text-muted-foreground leading-relaxed mb-8">
                         {project.fullDescription}
                       </p>
                       <div className="flex items-center text-pink-400 group-hover:text-violet-400 transition-colors">
@@ -140,11 +140,11 @@ const Projects = () => {
                         <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform" />
                       </div>
                     </div>
-                    <div className="bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl p-8 border border-gray-700">
-                      <h4 className="text-2xl font-bold text-white mb-6">Key Features</h4>
+                    <div className="bg-gradient-to-br from-muted/50 to-muted/70 rounded-2xl p-8 border border-border">
+                      <h4 className="text-2xl font-bold text-foreground mb-6">Key Features</h4>
                       <ul className="space-y-4">
                         {project.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-gray-300">
+                          <li key={featureIndex} className="flex items-center text-muted-foreground">
                             <div className="w-2 h-2 bg-gradient-to-r from-pink-500 to-violet-500 rounded-full mr-4"></div>
                             {feature}
                           </li>

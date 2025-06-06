@@ -43,14 +43,14 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-32 px-4 sm:px-6 lg:px-8 bg-black relative overflow-hidden">
+    <section id="projects" className="py-32 px-4 sm:px-6 lg:px-8 bg-background relative overflow-hidden">
       {/* Medical Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-gradient-to-br from-pink-500/10 via-transparent to-violet-500/10"></div>
-        <div className="absolute top-10 left-10 w-4 h-4 bg-white/10 rounded-full"></div>
-        <div className="absolute top-32 right-20 w-6 h-6 bg-white/5 rounded-full"></div>
-        <div className="absolute bottom-20 left-32 w-3 h-3 bg-white/10 rounded-full"></div>
-        <div className="absolute bottom-40 right-40 w-5 h-5 bg-white/5 rounded-full"></div>
+        <div className="absolute top-10 left-10 w-4 h-4 bg-foreground/10 rounded-full"></div>
+        <div className="absolute top-32 right-20 w-6 h-6 bg-foreground/5 rounded-full"></div>
+        <div className="absolute bottom-20 left-32 w-3 h-3 bg-foreground/10 rounded-full"></div>
+        <div className="absolute bottom-40 right-40 w-5 h-5 bg-foreground/5 rounded-full"></div>
       </div>
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-20">
@@ -59,7 +59,7 @@ export const Projects = () => {
               Medical Technology Projects
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Advancing healthcare through innovative medical technologies across specialized therapeutic areas
           </p>
           <Button 
@@ -78,17 +78,17 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <Card 
               key={index} 
-              className={`group bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 hover:-translate-y-4 border ${project.borderColor} overflow-hidden cursor-pointer`}
+              className={`group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-500 hover:-translate-y-4 border ${project.borderColor} overflow-hidden cursor-pointer`}
               onClick={() => window.location.href = '/projects'}
             >
               <CardContent className="p-8">
                 <div className={`w-20 h-20 bg-gradient-to-r ${project.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                  <project.icon className="h-10 w-10 text-white" />
+                  <project.icon className="h-10 w-10 text-primary-foreground" />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-pink-400 transition-colors">
+                <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-pink-400 transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-gray-300 leading-relaxed mb-6">
+                <p className="text-muted-foreground leading-relaxed mb-6">
                   {project.description}
                 </p>
                 <div className="flex items-center text-pink-400 group-hover:text-violet-400 transition-colors">

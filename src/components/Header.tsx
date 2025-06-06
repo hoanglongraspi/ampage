@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Menu, X, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ui/theme-toggle';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,22 +15,21 @@ export const Header = () => {
     { name: 'Projects', href: '/projects' },
     { name: 'News', href: '/news' },
     { name: 'Collaborators', href: '/collaborators' },
-    
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-black/90 backdrop-blur-xl shadow-lg z-50 border-b border-blue-500/20">
+    <header className="fixed top-0 w-full bg-background/90 backdrop-blur-xl shadow-lg z-50 border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-3">
             <div className="bg-gradient-to-r from-blue-500 to-teal-600 p-2 rounded-lg">
-              <Heart className="h-8 w-8 text-white" />
+              <Heart className="h-8 w-8 text-primary-foreground" />
             </div>
             <div>
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
                 Auspex Medix LLC
               </h1>
-              <p className="text-sm text-gray-400">Medical Technology Innovation</p>
+              <p className="text-sm text-muted-foreground">Medical Technology Innovation</p>
             </div>
           </Link>
 
@@ -40,8 +40,8 @@ export const Header = () => {
                 to={item.href}
                 className={`transition-colors duration-200 font-medium ${
                   location.pathname === item.href 
-                    ? 'text-blue-400' 
-                    : 'text-gray-300 hover:text-blue-400'
+                    ? 'text-blue-500' 
+                    : 'text-foreground/70 hover:text-blue-500'
                 }`}
               >
                 {item.name}
@@ -49,22 +49,26 @@ export const Header = () => {
             ))}
           </nav>
 
-          <div className="hidden md:flex">
+          <div className="hidden md:flex items-center space-x-4">
+            <ThemeToggle />
             <Button className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white border-0" onClick={() => window.location.href = '/contact'}>
               Contact Us
             </Button>
           </div>
 
-          <button
-            className="md:hidden text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <div className="md:hidden flex items-center space-x-2">
+            <ThemeToggle />
+            <button
+              className="text-foreground"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </button>
+          </div>
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-blue-500/20">
+          <div className="md:hidden py-4 border-t border-primary/20">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -72,8 +76,8 @@ export const Header = () => {
                   to={item.href}
                   className={`transition-colors duration-200 font-medium ${
                     location.pathname === item.href 
-                      ? 'text-blue-400' 
-                      : 'text-gray-300 hover:text-blue-400'
+                      ? 'text-blue-500' 
+                      : 'text-foreground/70 hover:text-blue-500'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >

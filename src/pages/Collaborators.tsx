@@ -99,10 +99,10 @@ const Collaborators = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Header />
       
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-black">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-20">
             <h1 className="text-6xl md:text-7xl font-bold mb-8">
@@ -110,7 +110,7 @@ const Collaborators = () => {
                 Global Network
               </span>
             </h1>
-            <p className="text-2xl text-gray-300 max-w-4xl mx-auto">
+            <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
               Building the future of AI healthcare through strategic partnerships and collaborative innovation
             </p>
           </div>
@@ -120,14 +120,14 @@ const Collaborators = () => {
             {stats.map((stat, index) => (
               <Card 
                 key={index} 
-                className="group bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-300 hover:-translate-y-2 border border-gray-700 hover:border-pink-500/50"
+                className="group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-300 hover:-translate-y-2 border border-border hover:border-pink-500/50"
               >
                 <CardContent className="p-8 text-center">
                   <div className={`w-16 h-16 bg-gradient-to-r ${stat.color} rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                    <stat.icon className="h-8 w-8 text-white" />
+                    <stat.icon className="h-8 w-8 text-primary-foreground" />
                   </div>
-                  <div className="text-4xl font-bold text-white mb-2">{stat.number}</div>
-                  <div className="text-gray-300">{stat.label}</div>
+                  <div className="text-4xl font-bold text-foreground mb-2">{stat.number}</div>
+                  <div className="text-muted-foreground">{stat.label}</div>
                 </CardContent>
               </Card>
             ))}
@@ -140,7 +140,7 @@ const Collaborators = () => {
                 Strategic Partners
               </span>
             </h2>
-            <p className="text-xl text-gray-400 text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground text-center mb-12 max-w-3xl mx-auto">
               Collaborating with world-renowned institutions to advance AI in healthcare
             </p>
             
@@ -148,7 +148,7 @@ const Collaborators = () => {
               {partners.map((partner, index) => (
                 <Card 
                   key={index} 
-                  className="group bg-gray-900/50 backdrop-blur-sm hover:bg-gray-800/70 transition-all duration-500 border border-gray-700 hover:border-pink-500/50"
+                  className="group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-500 border hover:border-pink-500/50"
                 >
                   <CardContent className="p-8">
                     <div className="flex items-start space-x-6">
@@ -157,19 +157,19 @@ const Collaborators = () => {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-2">
-                          <h3 className="text-2xl font-bold text-white group-hover:text-pink-400 transition-colors">
+                          <h3 className="text-2xl font-bold text-foreground group-hover:text-pink-400 transition-colors">
                             {partner.name}
                           </h3>
                           <span className="text-sm text-violet-400 bg-violet-400/10 px-3 py-1 rounded-full">
                             {partner.type}
                           </span>
                         </div>
-                        <p className="text-gray-300 mb-4 leading-relaxed">
+                        <p className="text-muted-foreground mb-4 leading-relaxed">
                           {partner.description}
                         </p>
                         <div className="flex items-center">
                           <span className="text-sm font-medium text-pink-400">Focus: </span>
-                          <span className="text-sm text-gray-400 ml-2">{partner.focus}</span>
+                          <span className="text-sm text-muted-foreground ml-2">{partner.focus}</span>
                         </div>
                       </div>
                     </div>
@@ -191,21 +191,21 @@ const Collaborators = () => {
               {collaborationAreas.map((area, index) => (
                 <Card 
                   key={index} 
-                  className={`group bg-gray-900/60 backdrop-blur-sm border ${area.borderColor} hover:border-opacity-70 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 relative overflow-hidden`}
+                  className={`group bg-card/60 backdrop-blur-sm border ${area.borderColor} hover:border-opacity-70 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/10 relative overflow-hidden`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800/30 to-gray-900/50"></div>
+                  <div className="absolute inset-0 bg-gradient-to-br from-muted/30 to-muted/50"></div>
                   <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-br ${area.color} opacity-10 rounded-full -translate-y-16 translate-x-16`}></div>
                   <CardContent className="p-8 relative z-10">
                     <div className={`w-16 h-16 ${area.iconBg} backdrop-blur-sm rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 border ${area.borderColor}`}>
                       <area.icon className={`h-8 w-8 ${area.color.includes('blue') ? 'text-blue-400' : area.color.includes('green') ? 'text-green-400' : 'text-purple-400'}`} />
                     </div>
-                    <h3 className={`text-2xl font-bold mb-4 group-hover:${area.color.includes('blue') ? 'text-blue-400' : area.color.includes('green') ? 'text-green-400' : 'text-purple-400'} transition-colors text-white`}>
+                    <h3 className={`text-2xl font-bold mb-4 group-hover:${area.color.includes('blue') ? 'text-blue-400' : area.color.includes('green') ? 'text-green-400' : 'text-purple-400'} transition-colors text-foreground`}>
                       {area.title}
                     </h3>
-                    <p className="text-gray-300 mb-6 leading-relaxed">{area.description}</p>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">{area.description}</p>
                     <ul className="space-y-3">
                       {area.points.map((point, pointIndex) => (
-                        <li key={pointIndex} className="flex items-center text-gray-300">
+                        <li key={pointIndex} className="flex items-center text-muted-foreground">
                           <div className={`w-2 h-2 bg-gradient-to-r ${area.color} rounded-full mr-3 flex-shrink-0`}></div>
                           <span className="text-sm">{point}</span>
                         </li>
@@ -220,8 +220,8 @@ const Collaborators = () => {
           {/* Call to Action */}
           <div className="bg-gradient-to-r from-pink-500/10 to-violet-500/10 rounded-3xl p-12 backdrop-blur-sm border border-pink-500/20">
             <div className="text-center">
-              <h3 className="text-4xl font-bold text-white mb-6">Join Our AI Revolution</h3>
-              <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
+              <h3 className="text-4xl font-bold text-foreground mb-6">Join Our AI Revolution</h3>
+              <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
                 Partner with us to shape the future of AI-powered healthcare solutions and make a lasting impact on global health outcomes
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
