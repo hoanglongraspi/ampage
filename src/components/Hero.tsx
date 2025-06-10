@@ -61,7 +61,7 @@ export const Hero = () => {
                 Explore Projects
                 <ArrowRight className="ml-2 lg:ml-3 h-5 w-5 lg:h-6 lg:w-6 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button 
+              {/* <Button 
                 size="lg" 
                 variant="outline"
                 className="border-2 border-teal-400/50 bg-transparent hover:bg-teal-500/20 hover:border-teal-400/70 px-8 lg:px-12 py-4 lg:py-6 text-base lg:text-lg rounded-xl backdrop-blur-sm transition-all duration-300 hover:scale-105 group"
@@ -69,7 +69,7 @@ export const Hero = () => {
               >
                 <Newspaper className="mr-2 lg:mr-3 h-4 w-4 lg:h-5 lg:w-5 group-hover:rotate-6 transition-transform duration-300" />
                 Latest News
-              </Button>
+              </Button> */}
             </div>
           </div>
           
