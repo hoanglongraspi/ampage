@@ -8,7 +8,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
-import Collaborators from "./pages/Collaborators";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 
@@ -32,7 +31,6 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
-            <Route path="/collaborators" element={<Collaborators />} />
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
 

@@ -69,11 +69,17 @@ export const Collaborators = () => {
               Partner with us to shape the future of AI-powered healthcare solutions
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105">
-                Become a Partner
+              <button 
+                className="bg-gradient-to-r from-pink-500 to-violet-600 hover:from-pink-600 hover:to-violet-700 text-white px-8 py-4 rounded-xl font-medium transition-all duration-300 hover:scale-105"
+                onClick={() => window.location.href = '/about'}
+              >
+                Learn More
               </button>
-              <button className="border border-pink-500 text-pink-400 hover:bg-pink-500/10 px-8 py-4 rounded-xl font-medium transition-all duration-300">
-                Research Collaboration
+              <button 
+                className="border border-pink-500 text-pink-400 hover:bg-pink-500/10 px-8 py-4 rounded-xl font-medium transition-all duration-300"
+                onClick={() => window.location.href = '/contact'}
+              >
+                Contact Us
               </button>
             </div>
           </div>
