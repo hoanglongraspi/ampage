@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/theme-provider";
 import Index from "./pages/Index";
 import About from "./pages/About";
-import Projects from "./pages/Projects";
+import Products from "./pages/Products";
 import News from "./pages/News";
 import Contact from "./pages/Contact";
 import SpeechLanguagePathology from "./pages/SpeechLanguagePathology";
@@ -35,12 +35,12 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/speech-language-pathology" element={<SpeechLanguagePathology />} />
-            <Route path="/projects/physical-occupational-therapy" element={<PhysicalOccupationalTherapy />} />
-            <Route path="/projects/audiology" element={<Audiology />} />
-            <Route path="/projects/dentistry" element={<Dentistry />} />
-            <Route path="/projects/wound-healing-diabetic-care" element={<WoundHealingDiabeticCare />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/speech-language-pathology" element={<SpeechLanguagePathology />} />
+            <Route path="/products/physical-occupational-therapy" element={<PhysicalOccupationalTherapy />} />
+            <Route path="/products/audiology" element={<Audiology />} />
+            <Route path="/products/dentistry" element={<Dentistry />} />
+            <Route path="/products/wound-healing-diabetic-care" element={<WoundHealingDiabeticCare />} />
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
 

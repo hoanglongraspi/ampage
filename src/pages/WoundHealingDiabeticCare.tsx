@@ -15,9 +15,9 @@ const WoundHealingDiabeticCare = () => {
         <div className="max-w-6xl mx-auto">
           {/* Header Section */}
           <div className="text-center mb-16">
-            <Link to="/projects" className="inline-flex items-center text-blue-500 hover:text-blue-600 mb-6 group">
+            <Link to="/products" className="inline-flex items-center text-blue-500 hover:text-blue-600 mb-6 group">
               <ArrowLeft className="h-4 w-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-              Back to Projects
+              Back to Products
             </Link>
             
             <div className="flex items-center justify-center mb-6">

@@ -64,7 +64,7 @@ src/
 │   ├── ui/             # shadcn/ui components
 │   ├── Header.tsx      # Navigation header
 │   ├── Hero.tsx        # Hero section
-│   ├── Projects.tsx    # Projects showcase
+│   ├── Products.tsx    # Products showcase
 │   ├── Services.tsx    # Services section
 │   ├── About.tsx       # About section
 │   ├── Contact.tsx     # Contact form
@@ -72,7 +72,7 @@ src/
 ├── pages/              # Page components
 │   ├── Index.tsx       # Home page
 │   ├── About.tsx       # About page
-│   ├── Projects.tsx    # Projects page
+│   ├── Products.tsx    # Products page
 │   ├── News.tsx        # News page
 │   ├── Contact.tsx     # Contact page
 │   └── Collaborators.tsx # Collaborators page
