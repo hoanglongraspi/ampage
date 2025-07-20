@@ -1,5 +1,4 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -8,12 +7,16 @@ export const Footer = () => {
         <div className="flex flex-col items-center text-center space-y-6">
           {/* Company Logo and Name */}
           <div className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-blue-500 to-teal-600 p-2 rounded-lg">
-              <Heart className="h-6 w-6 text-primary-foreground" />
+            <div className="rounded-lg flex items-center justify-center">
+              <img 
+                src="/AM_logo.svg" 
+                alt="Auspex Medix Logo" 
+                className="h-10 w-10 object-contain"
+              />
             </div>
             <div>
-              <h3 className="text-xl font-bold bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
-                Auspex Medix LLC
+              <h3 className="text-xl font-bold text-black-500">
+                Auspex Medix
               </h3>
               <p className="text-sm text-muted-foreground">Medical Technology Innovation</p>
             </div>

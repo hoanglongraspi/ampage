@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Heart } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
@@ -21,12 +21,16 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-3">
-            <div className="bg-gradient-to-r from-blue-500 to-teal-600 p-2 rounded-lg">
-              <Heart className="h-8 w-8 text-primary-foreground" />
+            <div className="rounded-lg flex items-center justify-center">
+              <img 
+                src="/AM_logo.svg" 
+                alt="Auspex Medix Logo" 
+                className="h-12 w-12 object-contain"
+              />
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
-                Auspex Medix LLC
+              <h1 className="text-2xl font-bold text-black-500">
+                Auspex Medix
               </h1>
               <p className="text-sm text-muted-foreground">Medical Technology Innovation</p>
             </div>
@@ -50,7 +54,7 @@ export const Header = () => {
 
           <div className="hidden md:flex items-center space-x-4">
             <ThemeToggle />
-            <Button className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white border-0" onClick={() => window.location.href = '/contact'}>
+            <Button className="bg-blue-500 hover:bg-blue-600 text-white border-0" onClick={() => window.location.href = '/contact'}>
               Contact Us
             </Button>
           </div>
@@ -83,7 +87,7 @@ export const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white w-full mt-4 border-0">
+              <Button className="bg-blue-500 hover:bg-blue-600 text-white w-full mt-4 border-0">
                 Contact Us
               </Button>
             </nav>

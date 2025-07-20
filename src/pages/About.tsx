@@ -153,7 +153,7 @@ const About = () => {
       </section>
 
       {/* Our Team */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50/50 to-gray-50/50 dark:from-slate-900/30 dark:to-gray-900/30 relative overflow-hidden">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50/50 to-gray-50/50 dark:from-slate-900/30 dark:to-gray-900/30 relative overflow-hidden">
         <div className="absolute inset-0 bg-dot-pattern opacity-5"></div>
         
         <div className="relative max-w-7xl mx-auto">
@@ -169,7 +169,7 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Team Member 1 */}
+           
             <div className="group">
               <div className="bg-background/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border hover:-translate-y-2 h-full">
                 <div className="text-center">
@@ -188,7 +188,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Team Member 2 */}
+           
             <div className="group">
               <div className="bg-background/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border hover:-translate-y-2 h-full">
                 <div className="text-center">
@@ -207,7 +207,7 @@ const About = () => {
               </div>
             </div>
 
-            {/* Team Member 3 */}
+         
             <div className="group">
               <div className="bg-background/90 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border hover:-translate-y-2 h-full">
                 <div className="text-center">
@@ -227,7 +227,7 @@ const About = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <Footer />
       

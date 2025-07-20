@@ -6,8 +6,20 @@ export const Hero = () => {
   return (
     <section id="home" className="min-h-screen">
       {/* Hero Section - Full Screen */}
-      <div className="h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 px-4 sm:px-6 lg:px-8 pt-20">
-        <div className="max-w-6xl mx-auto text-center">
+      <div className="h-screen flex items-center justify-center relative overflow-hidden px-4 sm:px-6 lg:px-8 pt-20">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url('/public/photo.jpg')`,
+          }}
+        />
+        
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-gray-50/90 to-gray-100/90 dark:from-gray-900/90 dark:to-gray-800/90" />
+        
+        {/* Content */}
+        <div className="max-w-6xl mx-auto text-center relative z-10">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground">
             Advancing Healthcare Through
             <br />
@@ -17,8 +29,8 @@ export const Hero = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-            Auspex Medix LLC develops innovative AI-powered medical technologies across five specialized areas: 
-            Physical Therapy, Audiology, Wound Care, Speech Therapy, and Dentistry to improve patient outcomes and support healthcare professionals.
+          Auspex Medix develops innovative AI-powered medical technologies that enhance patient outcomes and support healthcare professionals 
+          across diverse specialties, including Speech-Language Pathology, Physical & Occupational Therapy, Audiology, Dentistry, Wound Healing & Diabetic Care and more...
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
