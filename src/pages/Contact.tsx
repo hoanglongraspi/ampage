@@ -33,8 +33,8 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      details: "contact@auspexmedix.com",
-      description: "Send us an email for general inquiries",
+      details: "info@auspexmedix.com",
+      description: "Send us an email for collaboration",
       color: "from-blue-500 to-blue-600"
     },
     {
@@ -60,26 +60,7 @@ const Contact = () => {
     }
   ];
 
-  const departments = [
-    {
-      icon: Users,
-      title: "General Inquiries",
-      email: "contact@auspexmedix.com",
-      description: "For general questions and information"
-    },
-    {
-      icon: Building,
-      title: "Research Partnerships",
-      email: "research@auspexmedix.com",
-      description: "Collaborate with our research team"
-    },
-    {
-      icon: Globe,
-      title: "Business Development",
-      email: "business@auspexmedix.com",
-      description: "Partnership and collaboration opportunities"
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -147,29 +128,7 @@ const Contact = () => {
           </div>
 
           {/* Departments */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {departments.map((dept, index) => (
-              <Card 
-                key={index}
-                className="group bg-background/60 backdrop-blur-sm border hover:border-teal-500/50 transition-all duration-500 shadow-lg hover:shadow-xl"
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center space-x-4 mb-4">
-                    <div className="bg-teal-500/20 w-12 h-12 rounded-xl flex items-center justify-center">
-                      <dept.icon className="h-6 w-6 text-teal-500" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-foreground group-hover:text-teal-500 transition-colors">
-                        {dept.title}
-                      </h3>
-                      <p className="text-teal-500 text-sm font-medium">{dept.email}</p>
-                    </div>
-                  </div>
-                  <p className="text-muted-foreground text-sm">{dept.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          
         </div>
       </section>
 

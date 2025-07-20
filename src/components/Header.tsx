@@ -87,7 +87,10 @@ export const Header = () => {
                   {item.name}
                 </Link>
               ))}
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white w-full mt-4 border-0">
+              <Button 
+                className="bg-blue-500 hover:bg-blue-600 text-white w-full mt-4 border-0"
+                onClick={() => window.location.href = '/contact'}
+              >
                 Contact Us
               </Button>
             </nav>
