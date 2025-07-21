@@ -105,8 +105,7 @@ This project is proprietary to Auspex Medix LLC. All rights reserved.
 ## Contact
 
 **Auspex Medix LLC**
-- Email: contact@auspexmedix.com
-- Phone: +1 (716) 645-2000
-- Address: Baird Hall, University at Buffalo, Buffalo, NY 14260
+- Email: info@auspexmedix.com
+- Address: 1576 Sweet Home Rd, Buffalo, NY 14228, United States
 
 For technical questions or support, please contact our development team.

@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -72,22 +72,8 @@ export const Contact = () => {
                     <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">AI Inquiries</h3>
-                    <p className="text-slate-600">ai@auspexmedix.com</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="shadow-xl border-0">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="bg-gradient-to-r from-rose-500 to-pink-600 p-3 rounded-xl">
-                    <Phone className="h-6 w-6 text-white" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-slate-900">AI Consultations</h3>
-                    <p className="text-slate-600">+1 (555) 123-4567</p>
+                    <h3 className="font-semibold text-slate-900">Email Contact</h3>
+                    <p className="text-slate-600">info@auspexmedix.com</p>
                   </div>
                 </div>
               </CardContent>
@@ -100,10 +86,10 @@ export const Contact = () => {
                     <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-slate-900">AI Lab</h3>
+                    <h3 className="font-semibold text-slate-900">Address</h3>
                     <p className="text-slate-600">
-                      123 AI Innovation Center<br />
-                      Medical AI District, NY 10001
+                      1576 Sweet Home Rd<br />
+                      Buffalo, NY 14228, United States
                     </p>
                   </div>
                 </div>

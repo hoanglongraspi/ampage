@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Mail, Phone, MapPin, Clock, Send, Building, Globe, Users } from 'lucide-react';
+import { Mail, MapPin, Clock, Send, Building, Globe, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 
@@ -36,13 +36,6 @@ const Contact = () => {
       details: "info@auspexmedix.com",
       description: "Send us an email for collaboration",
       color: "from-blue-500 to-blue-600"
-    },
-    {
-      icon: Phone,
-      title: "Phone",
-      details: "+1 (716) 645-2000",
-      description: "Call us during business hours",
-      color: "from-green-500 to-green-600"
     },
     {
       icon: MapPin,
@@ -107,14 +100,14 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
             {contactInfo.map((info, index) => (
               <Card 
                 key={index}
                 className="group bg-background/60 backdrop-blur-sm border hover:border-blue-500/50 transition-all duration-500 hover:-translate-y-2 text-center shadow-lg hover:shadow-xl"
               >
                 <CardContent className="p-8">
-                  <div className={`w-16 h-16 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                  <div className={`w-20 h-20 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500`}>
                     <info.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-500 transition-colors">
