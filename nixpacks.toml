@@ -1,11 +1,9 @@
-[build]
-cmd = "npm run build"
-
-[start]
-cmd = "serve -s dist -l 3000"
+[providers]
+node = "18"
 
 [variables]
 NODE_ENV = "production"
+NPM_CONFIG_PRODUCTION = "false"
 
 [phases.setup]
 nixPkgs = ["nodejs-18_x", "npm-9_x"]
@@ -16,3 +14,6 @@ cmd = "npm install --production=false"
 [phases.build]
 dependsOn = ["install"]
 cmd = "npm run build"
+
+[start]
+cmd = "serve -s dist -l 3000"
