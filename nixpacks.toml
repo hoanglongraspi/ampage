@@ -17,14 +17,3 @@ cmd = "npm run build"
 [start]
 cmd = "serve -s dist -l 3000"
 
-# Add health check configuration
-[healthcheck]
-cmd = "curl -f http://localhost:3000/ || exit 1"
-interval = "30s"
-timeout = "10s"
-retries = 3
-startPeriod = "40s"
-
-# Explicitly override any auto-detected commands
-[build]
-cmd = "npm run build"
