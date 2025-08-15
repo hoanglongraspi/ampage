@@ -1,4 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { FileText } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -20,6 +23,21 @@ export const Footer = () => {
               </h3>
               <p className="text-sm text-muted-foreground">Medical Technology Innovation</p>
             </div>
+          </div>
+
+          {/* FCOI Navigation Button */}
+          <div className="flex justify-center">
+            <Button 
+              asChild 
+              variant="outline"
+              size="sm"
+              className="flex items-center gap-2"
+            >
+              <Link to="/FCOI">
+                <FileText className="h-4 w-4" />
+                Financial Conflict of Interest Policy
+              </Link>
+            </Button>
           </div>
 
           {/* Copyright */}
