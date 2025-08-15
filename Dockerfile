@@ -1,5 +1,4 @@
-# Multi-stage build for optimized production deployment
-# Stage 1: Build the application
+# Simplified single-stage build for Coolify
 FROM node:18-alpine AS builder
 
 # Set working directory
@@ -7,9 +6,8 @@ WORKDIR /app
 
 # Copy package files
 COPY package*.json ./
-COPY bun.lockb ./
 
-# Install dependencies (including dev dependencies for build)
+# Install dependencies
 RUN npm ci --silent
 
 # Copy source code
@@ -18,50 +16,48 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Clean up node_modules to reduce image size (optional, since we're using multi-stage)
-RUN rm -rf node_modules
+# List build output for debugging
+RUN echo "=== Build output ===" && ls -la dist/
 
-# Stage 2: Production server with Nginx
-FROM nginx:alpine AS production
+# Production stage with nginx
+FROM nginx:alpine
 
-# Install dumb-init and wget for proper signal handling and health checks
-RUN apk add --no-cache dumb-init wget
+# Remove default nginx config
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Create nginx user and set permissions
-RUN addgroup -g 1001 -S nodejs && \
-    adduser -S nextjs -u 1001
+# Create simple nginx config directly in Dockerfile
+RUN echo 'server {' > /etc/nginx/conf.d/default.conf && \
+    echo '    listen 80;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    server_name _;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    root /usr/share/nginx/html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    index index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location / {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        try_files $uri $uri/ /index.html;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '    location /health {' >> /etc/nginx/conf.d/default.conf && \
+    echo '        return 200 "healthy\\n";' >> /etc/nginx/conf.d/default.conf && \
+    echo '        add_header Content-Type text/plain;' >> /etc/nginx/conf.d/default.conf && \
+    echo '    }' >> /etc/nginx/conf.d/default.conf && \
+    echo '}' >> /etc/nginx/conf.d/default.conf
 
-# Copy custom nginx configuration (use simplified version for Coolify)
-COPY --from=builder /app/nginx-simple.conf /etc/nginx/conf.d/default.conf
-
-# Copy built application from builder stage
+# Copy built files
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy static assets (including PDF files) - avoid overwriting
-COPY --from=builder /app/public/* /usr/share/nginx/html/
+# Copy public files (including PDF)
+COPY --from=builder /app/public /tmp/public
+RUN cp -r /tmp/public/* /usr/share/nginx/html/ 2>/dev/null || true && \
+    rm -rf /tmp/public
 
-# Debug: List files to verify they're copied correctly
-RUN ls -la /usr/share/nginx/html/ && \
-    echo "=== Checking for index.html ===" && \
-    ls -la /usr/share/nginx/html/index.html || echo "index.html not found!"
-
-# Set proper permissions
-RUN chown -R nextjs:nodejs /usr/share/nginx/html && \
-    chown -R nextjs:nodejs /var/cache/nginx && \
-    chown -R nextjs:nodejs /var/log/nginx && \
-    chown -R nextjs:nodejs /etc/nginx/conf.d && \
-    touch /var/run/nginx.pid && \
-    chown -R nextjs:nodejs /var/run/nginx.pid
-
-# Note: Running as root for nginx to bind to port 80, nginx will drop privileges automatically
+# Verify files are in place
+RUN echo "=== Final file check ===" && \
+    ls -la /usr/share/nginx/html/ && \
+    echo "=== index.html content ===" && \
+    head -5 /usr/share/nginx/html/index.html 2>/dev/null || echo "No index.html found!" && \
+    echo "=== nginx config ===" && \
+    cat /etc/nginx/conf.d/default.conf
 
 # Expose port
 EXPOSE 80
 
-# Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget --no-verbose --tries=1 --spider http://localhost:80/ || exit 1
-
 # Start nginx
-ENTRYPOINT ["dumb-init", "--"]
 CMD ["nginx", "-g", "daemon off;"]
