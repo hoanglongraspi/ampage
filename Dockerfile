@@ -24,8 +24,8 @@ RUN rm -rf node_modules
 # Stage 2: Production server with Nginx
 FROM nginx:alpine AS production
 
-# Install dumb-init for proper signal handling
-RUN apk add --no-cache dumb-init
+# Install dumb-init and wget for proper signal handling and health checks
+RUN apk add --no-cache dumb-init wget
 
 # Create nginx user and set permissions
 RUN addgroup -g 1001 -S nodejs && \
@@ -48,8 +48,7 @@ RUN chown -R nextjs:nodejs /usr/share/nginx/html && \
     touch /var/run/nginx.pid && \
     chown -R nextjs:nodejs /var/run/nginx.pid
 
-# Switch to non-root user
-USER nextjs
+# Note: Running as root for nginx to bind to port 80, nginx will drop privileges automatically
 
 # Expose port
 EXPOSE 80
