@@ -31,14 +31,19 @@ RUN apk add --no-cache dumb-init wget
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S nextjs -u 1001
 
-# Copy custom nginx configuration
-COPY --from=builder /app/nginx.conf /etc/nginx/conf.d/default.conf
+# Copy custom nginx configuration (use simplified version for Coolify)
+COPY --from=builder /app/nginx-simple.conf /etc/nginx/conf.d/default.conf
 
 # Copy built application from builder stage
 COPY --from=builder /app/dist /usr/share/nginx/html
 
-# Copy static assets (including PDF files)
-COPY --from=builder /app/public /usr/share/nginx/html
+# Copy static assets (including PDF files) - avoid overwriting
+COPY --from=builder /app/public/* /usr/share/nginx/html/
+
+# Debug: List files to verify they're copied correctly
+RUN ls -la /usr/share/nginx/html/ && \
+    echo "=== Checking for index.html ===" && \
+    ls -la /usr/share/nginx/html/index.html || echo "index.html not found!"
 
 # Set proper permissions
 RUN chown -R nextjs:nodejs /usr/share/nginx/html && \
