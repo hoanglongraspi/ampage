@@ -1,6 +1,9 @@
 bun.lockb
 *.lockb
+bun.config.*
+bunfig.toml
 .git/
 node_modules/
 dist/
 .env*
+.DS_Store

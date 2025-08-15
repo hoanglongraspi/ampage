@@ -16,3 +16,7 @@ cmd = "npm run build"
 
 [start]
 cmd = "serve -s dist -l 3000"
+
+# Explicitly override any auto-detected commands
+[build]
+cmd = "npm run build"
