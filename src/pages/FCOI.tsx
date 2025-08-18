@@ -9,13 +9,13 @@ import { Download, FileText, Eye, ExternalLink, BookOpen } from 'lucide-react';
 interface FCOIProps {}
 
 const FCOI: React.FC<FCOIProps> = () => {
-  const pdfUrl = '/public/Auspex_Medix_FCOI_web.pdf';
+  const pdfUrl = '/Auspex_Medix_FCOI_web.pdf';
   const [viewMode, setViewMode] = useState<'pdf' | 'summary'>('pdf');
 
   const handleDownload = () => {
     const link = document.createElement('a');
     link.href = pdfUrl;
-    link.download = 'public/Auspex_Medix_FCOI_web.pdf';
+    link.download = 'Auspex_Medix_FCOI_web.pdf';
     link.click();
   };
 
