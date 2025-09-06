@@ -1,10 +1,36 @@
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Activity, Volume2, Scan, Mic, Smile } from 'lucide-react';
+import { Activity, Volume2, Scan, Mic, Smile, ExternalLink, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { Button } from '@/components/ui/button';
 
 const Products = () => {
+  const externalLinks = [
+    {
+      name: "mRehab",
+      url: "https://mRehab.auspexmedix.com"
+    },
+    {
+      name: "AudioSight",
+      url: "https://AudioSight.auspexmedix.com"
+    },
+    {
+      name: "Oralscan",
+      url: "https://Oralscan.health"
+    },
+    {
+      name: "Sate",
+      url: "https://Sate.agency"
+    }
+  ];
+
   const products = [
     {
       icon: Mic,
@@ -54,9 +80,41 @@ const Products = () => {
               Our Products
             </span>
           </h1>
-          <p className="text-xl text-muted-foreground mb-16">
+          <p className="text-xl text-muted-foreground mb-8">
             Medical technology solutions across key specialized areas
           </p>
+
+          {/* External Links Dropdown */}
+          <div className="mb-16 flex justify-center">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="outline" 
+                  className="bg-background border-2 hover:bg-secondary/50 transition-colors duration-300 px-6 py-3 text-lg font-medium"
+                >
+                  Visit Our Products
+                  <ChevronDown className="ml-2 h-5 w-5" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                align="center" 
+                className="w-64 bg-background border-2 shadow-xl rounded-xl p-2"
+              >
+                {externalLinks.map((link, index) => (
+                  <DropdownMenuItem 
+                    key={index}
+                    className="cursor-pointer hover:bg-secondary/50 rounded-lg p-3 transition-colors duration-200"
+                    onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
+                  >
+                    <div className="flex items-center justify-between w-full">
+                      <span className="text-foreground font-medium">{link.name}</span>
+                      <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
 
           {/* Improved grid layout for better visual balance */}
           <div className="flex flex-col items-center gap-8">

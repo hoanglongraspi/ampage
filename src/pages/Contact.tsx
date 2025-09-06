@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Mail, MapPin, Clock, Send, Building, Globe, Users } from 'lucide-react';
+import { Mail, MapPin, Clock, Send, Building, Globe, Users, Phone, CheckCircle, XCircle, X } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,12 +15,59 @@ const Contact = () => {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [popup, setPopup] = useState({
+    isOpen: false,
+    type: 'success', // 'success' or 'error'
+    title: '',
+    message: ''
+  });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you soon.');
-    setFormData({ name: '', email: '', company: '', subject: '', message: '' });
+    
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('access_key', 'd95d0382-7808-4efb-9366-fccfa97b7304');
+      formDataToSend.append('name', formData.name);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('company', formData.company);
+      formDataToSend.append('subject', `Auspex Medix Contact: ${formData.subject}`);
+      formDataToSend.append('inquiry_type', formData.subject);
+      formDataToSend.append('message', formData.message);
+
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formDataToSend
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setPopup({
+          isOpen: true,
+          type: 'success',
+          title: 'Message Sent Successfully!',
+          message: 'Thank you for contacting us. We will get back to you soon.'
+        });
+        setFormData({ name: '', email: '', company: '', subject: '', message: '' });
+      } else {
+        console.log('Error:', data);
+        setPopup({
+          isOpen: true,
+          type: 'error',
+          title: 'Submission Failed',
+          message: 'There was an error sending your message. Please try again or contact us directly.'
+        });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setPopup({
+        isOpen: true,
+        type: 'error',
+        title: 'Network Error',
+        message: 'Unable to send your message. Please check your connection and try again.'
+      });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -36,6 +84,13 @@ const Contact = () => {
       details: "info@auspexmedix.com",
       description: "Send us an email for collaboration",
       color: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      details: "(716) 275-2321",
+      description: "Call us during business hours",
+      color: "from-green-500 to-green-600"
     },
     {
       icon: MapPin,
@@ -100,21 +155,21 @@ const Contact = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-[80rem] mx-auto px-8">
             {contactInfo.map((info, index) => (
               <Card 
                 key={index}
-                className="group bg-background/60 backdrop-blur-sm border hover:border-blue-500/50 transition-all duration-500 hover:-translate-y-2 text-center shadow-lg hover:shadow-xl"
+                className="group bg-background/60 backdrop-blur-sm border hover:border-blue-500/50 transition-all duration-500 hover:-translate-y-2 text-center shadow-lg hover:shadow-xl min-h-[280px]"
               >
-                <CardContent className="p-8">
-                  <div className={`w-20 h-20 bg-gradient-to-r ${info.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-500`}>
-                    <info.icon className="h-8 w-8 text-white" />
+                <CardContent className="p-12">
+                  <div className={`w-28 h-28 bg-gradient-to-r ${info.color} rounded-3xl flex items-center justify-center mx-auto mb-8 group-hover:scale-110 transition-transform duration-500`}>
+                    <info.icon className="h-12 w-12 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-500 transition-colors">
+                  <h3 className="text-2xl font-bold text-foreground mb-4 group-hover:text-blue-500 transition-colors">
                     {info.title}
                   </h3>
-                  <p className="text-blue-500 font-semibold mb-2">{info.details}</p>
-                  <p className="text-muted-foreground text-sm">{info.description}</p>
+                  <p className="text-blue-500 font-semibold mb-3 text-lg">{info.details}</p>
+                  <p className="text-muted-foreground text-base">{info.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -132,8 +187,12 @@ const Contact = () => {
             
             {/* Contact Form */}
             <div>
-              <h2 className="text-4xl font-bold mb-8 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
+              <h2 className="text-4xl font-bold mb-8 gap-12 bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
                 Send us a Message
+                <br />
+                <span className="text-muted-foreground text-sm">
+                  Let's collaborate on your medical technology needs
+                </span>
               </h2>
               <Card className="bg-background/60 backdrop-blur-sm border shadow-xl">
                 <CardContent className="p-8">
@@ -302,6 +361,47 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Success/Error Popup Modal */}
+      <Dialog open={popup.isOpen} onOpenChange={(open) => setPopup(prev => ({ ...prev, isOpen: open }))}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader className="text-center">
+            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full">
+              {popup.type === 'success' ? (
+                <div className="bg-green-100 dark:bg-green-900 rounded-full p-4">
+                  <CheckCircle className="h-8 w-8 text-green-600 dark:text-green-400" />
+                </div>
+              ) : (
+                <div className="bg-red-100 dark:bg-red-900 rounded-full p-4">
+                  <XCircle className="h-8 w-8 text-red-600 dark:text-red-400" />
+                </div>
+              )}
+            </div>
+            <DialogTitle className={`text-xl font-bold ${
+              popup.type === 'success' 
+                ? 'text-green-600 dark:text-green-400' 
+                : 'text-red-600 dark:text-red-400'
+            }`}>
+              {popup.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="text-center">
+            <p className="text-muted-foreground mb-6">
+              {popup.message}
+            </p>
+            <Button 
+              onClick={() => setPopup(prev => ({ ...prev, isOpen: false }))}
+              className={`w-full ${
+                popup.type === 'success'
+                  ? 'bg-green-600 hover:bg-green-700 dark:bg-green-600 dark:hover:bg-green-700'
+                  : 'bg-red-600 hover:bg-red-700 dark:bg-red-600 dark:hover:bg-red-700'
+              } text-white`}
+            >
+              Close
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>
