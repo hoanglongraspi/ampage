@@ -82,7 +82,7 @@ const Index = () => {
         </div>
       </section>
 
-      <Collaborators />
+      
       <Footer />
     </div>
   );

@@ -59,6 +59,14 @@ export const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button 
+              size="lg" 
+              variant="outline"
+              className="border-2 border-blue-400/50 px-8 py-4 text-lg rounded-xl"
+              onClick={() => window.location.href = '/about'}
+            >
+              About us
+            </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button 
@@ -88,14 +96,7 @@ export const Hero = () => {
               </DropdownMenuContent>
             </DropdownMenu>
             
-            <Button 
-              size="lg" 
-              variant="outline"
-              className="border-2 border-blue-400/50 px-8 py-4 text-lg rounded-xl"
-              onClick={() => window.location.href = '/contact'}
-            >
-              Contact Us
-            </Button>
+            
           </div>
         </div>
       </div>

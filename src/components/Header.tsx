@@ -1,12 +1,19 @@
 
 import React, { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ChevronDown, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, useLocation } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMobileProductsOpen, setIsMobileProductsOpen] = useState(false);
   const location = useLocation();
 
   const navigation = [
@@ -14,6 +21,13 @@ export const Header = () => {
     { name: 'About Us', href: '/about' },
     // { name: 'Products', href: '/products' },
     
+  ];
+
+  const products = [
+    { name: 'mRehab', href: '#', external: true },
+    { name: 'AudioSight', href: '#', external: true },
+    { name: 'Oralscan', href: '#', external: true },
+    { name: 'Sate', href: '#', external: true },
   ];
 
   return (
@@ -36,7 +50,7 @@ export const Header = () => {
             </div>
           </Link>
 
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 items-center">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -50,6 +64,36 @@ export const Header = () => {
                 {item.name}
               </Link>
             ))}
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  variant="ghost" 
+                  className="text-foreground/70 hover:text-blue-500 font-medium p-0 h-auto bg-transparent hover:bg-transparent"
+                >
+                  Visit Our Products
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                align="start" 
+                className="w-48 bg-background border border-border shadow-lg rounded-lg"
+              >
+                {products.map((product) => (
+                  <DropdownMenuItem key={product.name} asChild>
+                    <a
+                      href={product.href}
+                      target={product.external ? "_blank" : undefined}
+                      rel={product.external ? "noopener noreferrer" : undefined}
+                      className="flex items-center justify-between w-full px-3 py-2 text-foreground/70 hover:text-blue-500 hover:bg-muted cursor-pointer"
+                    >
+                      {product.name}
+                      {product.external && <ExternalLink className="h-4 w-4" />}
+                    </a>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </nav>
 
           <div className="hidden md:flex items-center space-x-4">
@@ -87,6 +131,37 @@ export const Header = () => {
                   {item.name}
                 </Link>
               ))}
+              
+              <div className="space-y-2">
+                <button
+                  onClick={() => setIsMobileProductsOpen(!isMobileProductsOpen)}
+                  className="flex items-center justify-between w-full text-foreground/70 hover:text-blue-500 font-medium transition-colors duration-200"
+                >
+                  Visit Our Products
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                    isMobileProductsOpen ? 'rotate-180' : ''
+                  }`} />
+                </button>
+                
+                {isMobileProductsOpen && (
+                  <div className="pl-4 space-y-2 border-l-2 border-border">
+                    {products.map((product) => (
+                      <a
+                        key={product.name}
+                        href={product.href}
+                        target={product.external ? "_blank" : undefined}
+                        rel={product.external ? "noopener noreferrer" : undefined}
+                        className="flex items-center justify-between text-foreground/60 hover:text-blue-500 transition-colors duration-200"
+                        onClick={() => setIsMenuOpen(false)}
+                      >
+                        {product.name}
+                        {product.external && <ExternalLink className="h-4 w-4" />}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
               <Button 
                 className="bg-blue-500 hover:bg-blue-600 text-white w-full mt-4 border-0"
                 onClick={() => window.location.href = '/contact'}
