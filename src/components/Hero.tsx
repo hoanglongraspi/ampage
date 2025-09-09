@@ -1,8 +1,33 @@
 import React from 'react';
-import { ArrowRight, Activity, Users, Stethoscope } from 'lucide-react';
+import { ArrowRight, Activity, Users, Stethoscope, ChevronDown, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 export const Hero = () => {
+  const externalLinks = [
+    {
+      name: "mRehab",
+      url: "https://mRehab.auspexmedix.com"
+    },
+    {
+      name: "AudioSight",
+      url: "https://AudioSight.auspexmedix.com"
+    },
+    {
+      name: "Oralscan",
+      url: "https://Oralscan.health"
+    },
+    {
+      name: "Sate",
+      url: "https://Sate.agency"
+    }
+  ];
+
   return (
     <section id="home" className="min-h-screen">
       {/* Hero Section - Full Screen */}
@@ -34,14 +59,34 @@ export const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              size="lg" 
-              className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white px-8 py-4 text-lg group border-0 rounded-xl"
-              onClick={() => window.location.href = '/about'}
-            >
-              Learn More
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button 
+                  size="lg" 
+                  className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white px-8 py-4 text-lg group border-0 rounded-xl"
+                >
+                  Visit Our Products
+                  <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent 
+                align="center" 
+                className="w-64 bg-background border-2 shadow-xl rounded-xl p-2 mt-2"
+              >
+                {externalLinks.map((link, index) => (
+                  <DropdownMenuItem 
+                    key={index}
+                    className="cursor-pointer hover:bg-secondary/50 rounded-lg p-3 transition-colors duration-200"
+                    onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
+                  >
+                    <div className="flex items-center justify-between w-full">
+                      <span className="text-foreground font-medium">{link.name}</span>
+                      <ExternalLink className="h-4 w-4 text-muted-foreground" />
+                    </div>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             <Button 
               size="lg" 
