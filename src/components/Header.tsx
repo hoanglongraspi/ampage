@@ -24,10 +24,10 @@ export const Header = () => {
   ];
 
   const products = [
-    { name: 'mRehab', href: '#', external: true },
-    { name: 'AudioSight', href: '#', external: true },
-    { name: 'Oralscan', href: '#', external: true },
-    { name: 'Sate', href: '#', external: true },
+    { name: 'mRehab', href: 'https://mrehab.auspexmedix.com/', external: true },
+    { name: 'AudioSight', href: 'https://audiosight.auspexmedix.com/', external: true },
+    { name: 'Oralscan', href: 'https://oralscan.health/', external: true },
+    { name: 'Sate', href: 'https://sate.agency/', external: true },
   ];
 
   return (
