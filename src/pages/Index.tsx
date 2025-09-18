@@ -16,11 +16,11 @@ const Index = () => {
   const externalLinks = [
     {
       name: "mRehab",
-      url: "https://mRehab.auspexmedix.com"
+      url: "https://mRehab.agency"
     },
     {
       name: "AudioSight", 
-      url: "https://AudioSight.auspexmedix.com"
+      url: "https://AudioSight.agency"
     },
     {
       name: "Oralscan",
