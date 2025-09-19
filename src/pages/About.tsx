@@ -23,18 +23,18 @@ const About = () => {
             <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Medical Technology Innovation</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in">
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 ">
             <span className="bg-gradient-to-r from-blue-600 via-teal-500 to-purple-600 bg-clip-text text-transparent">
               About Auspex Medix
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12 animate-fade-in-delay">
-            Revolutionizing healthcare through 
-            <span className="font-semibold text-foreground bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent"> cutting-edge artificial intelligence</span> and advanced machine learning technologies that transform patient care and empower medical professionals across every specialty.
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12 ">
+          Auspex Medix develops
+            <span className="font-semibold text-foreground bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent"> AI‑driven medical technologies</span>  that enhance patient outcomes and support healthcare professionals across specialties - designed to be secure, interoperable, and human‑in‑the‑loop.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 animate-fade-in-delay-2">
+          <div className="flex flex-wrap justify-center gap-6 ">
             <div className="flex items-center text-muted-foreground">
               <Target className="h-5 w-5 text-blue-500 mr-2" />
               <span>AI-Powered Solutions</span>

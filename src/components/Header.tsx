@@ -24,10 +24,10 @@ export const Header = () => {
   ];
 
   const products = [
-    { name: 'mRehab', href: 'https://mrehab.agency/', external: true },
-    { name: 'AudioSight', href: 'https://audiosight.agency/', external: true },
-    { name: 'Oralscan', href: 'https://oralscan.health/', external: true },
-    { name: 'Sate', href: 'https://sate.agency/', external: true },
+    { name: 'Auspex mRehab', href: 'https://mrehab.agency/', external: true },
+    { name: 'Auspex AudioSight', href: 'https://audiosight.agency/', external: true },
+    { name: 'Auspex OralScan', href: 'https://oralscan.health/', external: true },
+    { name: 'Auspex SATE', href: 'https://sate.agency/', external: true },
   ];
 
   return (
@@ -46,7 +46,7 @@ export const Header = () => {
               <h1 className="text-2xl font-bold text-black-500">
                 Auspex Medix
               </h1>
-              <p className="text-sm text-muted-foreground">Medical Technology Innovation</p>
+              <p className="text-sm text-muted-foreground">AI Foresight. Human Care</p>
             </div>
           </Link>
 

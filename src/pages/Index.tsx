@@ -38,7 +38,7 @@ const Index = () => {
       <Hero />
       
       {/* Products Dropdown Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/20">
+      {/* <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary/20">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
             <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
@@ -80,7 +80,7 @@ const Index = () => {
             </DropdownMenu>
           </div>
         </div>
-      </section>
+      </section> */}
 
       
       <Footer />

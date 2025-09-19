@@ -9,21 +9,22 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 export const Hero = () => {
+
   const externalLinks = [
     {
-      name: "mRehab",
+      name: "Auspex mRehab",
       url: "https://mRehab.agency"
     },
     {
-      name: "AudioSight",
+      name: "Auspex AudioSight",
       url: "https://AudioSight.agency"
     },
     {
-      name: "Oralscan",
+      name: "Auspex OralScan",
       url: "https://Oralscan.health"
     },
     {
-      name: "Sate",
+      name: "Auspex SATE",
       url: "https://Sate.agency"
     }
   ];
@@ -45,21 +46,23 @@ export const Hero = () => {
         
         {/* Content */}
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-7xl font-black mb-8 leading-tight tracking-tight">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-7xl font-black mb-8 leading-tight tracking-tight animate-fade-in">
             <span className="text-blue-400 dark:text-blue-400">Predict.</span>
             <span className="text-teal-600 dark:text-teal-400"> Personalize.</span>
             <span className="text-green-600 dark:text-green-400"> Protect.</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-          Auspex Medix develops AI‑driven medical technologies that enhance patient outcomes and support healthcare professionals across specialties - designed to be secure, interoperable, and human‑in‑the‑loop.
+          <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-delay">
+          Auspex Medix develops <span className="bg-gradient-to-r from-blue-600 to-teal-600 dark:from-blue-400 dark:to-teal-400 bg-clip-text text-transparent font-bold text-2xl md:text-2xl">
+            AI‑driven medical technologies
+          </span> that enhance patient outcomes and support healthcare professionals across specialties - designed to be secure, interoperable, and human‑in‑the‑loop.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-delay-2">
           <Button 
               size="lg" 
               variant="outline"
-              className="border-2 border-blue-400/50 px-8 py-4 text-lg rounded-xl"
+              className="border-2 border-blue-400/50 px-8 py-4 text-lg rounded-xl hover:scale-105 transition-all duration-500 hover:shadow-lg hover:border-blue-500/70"
               onClick={() => window.location.href = '/about'}
             >
               About us
@@ -68,10 +71,10 @@ export const Hero = () => {
               <DropdownMenuTrigger asChild>
                 <Button 
                   size="lg" 
-                  className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white px-8 py-4 text-lg group border-0 rounded-xl"
+                  className="bg-gradient-to-r from-blue-500 to-teal-600 hover:from-blue-600 hover:to-teal-700 text-white px-8 py-4 text-lg group border-0 rounded-xl hover:scale-105 transition-all duration-500 hover:shadow-xl"
                 >
                   Visit Our Products
-                  <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+                  <ChevronDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform duration-500" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent 
