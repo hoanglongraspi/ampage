@@ -45,17 +45,14 @@ export const Hero = () => {
         
         {/* Content */}
         <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 text-foreground">
-            Advancing Healthcare Through
-            <br />
-            <span className="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-              Medical Technology
-            </span>
+          <h1 className="text-6xl md:text-7xl lg:text-8xl xl:text-7xl font-black mb-8 leading-tight tracking-tight">
+            <span className="text-blue-400 dark:text-blue-400">Predict.</span>
+            <span className="text-teal-600 dark:text-teal-400"> Personalize.</span>
+            <span className="text-green-600 dark:text-green-400"> Protect.</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
-          Auspex Medix develops innovative AI-powered medical technologies that enhance patient outcomes and support healthcare professionals 
-          across diverse specialties, including Speech-Language Pathology, Physical & Occupational Therapy, Audiology, Dentistry, Wound Healing & Diabetic Care and more...
+          Auspex Medix develops AI‑driven medical technologies that enhance patient outcomes and support healthcare professionals across specialties - designed to be secure, interoperable, and human‑in‑the‑loop.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
