@@ -96,7 +96,7 @@ const Contact = () => {
       icon: MapPin,
       title: "Address",
       details: "1576 Sweet Home Rd",
-      description: "Buffalo, NY 14228, United States",
+      description: "Buffalo, NY 14228-2710, United States",
       color: "from-purple-500 to-purple-600"
     },
     {
@@ -313,7 +313,7 @@ const Contact = () => {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Auspex Medix LLC Location - 1576 Sweet Home Rd, Buffalo, NY 14228"
+                      title="Auspex Medix LLC Location - 1576 Sweet Home Rd, Buffalo, NY 14228-2710"
                     ></iframe>
                   </div>
                 </CardContent>
@@ -333,7 +333,7 @@ const Contact = () => {
                       <h4 className="text-lg font-semibold text-blue-500 mb-2">Address</h4>
                       <p className="text-muted-foreground">
                         1576 Sweet Home Rd<br />
-                        Buffalo, NY 14228<br />
+                        Buffalo, NY 14228-2710<br />
                         United States
                       </p>
                     </div>
