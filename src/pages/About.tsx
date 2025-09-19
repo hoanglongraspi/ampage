@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Heart, Brain, Activity, User, Award, Code, Target, Zap, Shield } from 'lucide-react';
 
 const About = () => {
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    // Create intersection observer for scroll animations
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in-view');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    // Small delay to ensure DOM is ready
+    const timeout = setTimeout(() => {
+      const elements = document.querySelectorAll('.scroll-animate');
+      elements.forEach((el) => observerRef.current?.observe(el));
+    }, 100);
+
+    // Cleanup observer on unmount
+    return () => {
+      clearTimeout(timeout);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
@@ -18,32 +51,41 @@ const About = () => {
         </div>
         
         <div className="relative max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-950/30 dark:to-teal-950/30 rounded-full mb-8 border border-blue-200/50 dark:border-blue-800/50">
+          {/* <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-50 to-teal-50 dark:from-blue-950/30 dark:to-teal-950/30 rounded-full mb-8 border border-blue-200/50 dark:border-blue-800/50">
             <Heart className="h-5 w-5 text-blue-500 mr-3" />
             <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">Medical Technology Innovation</span>
-          </div>
+          </div> */}
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
+          <br />
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 ">
-            <span className="bg-gradient-to-r from-blue-600 via-teal-500 to-purple-600 bg-clip-text text-transparent">
-              About Auspex Medix
+          
+          
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 animate-fade-in">
+            <span className="bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
+              About<br className="md:hidden" /> Auspex Medix
             </span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12 ">
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto leading-relaxed mb-12 animate-fade-in-delay">
           Auspex Medix develops
             <span className="font-semibold text-foreground bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent"> AI‑driven medical technologies</span>  that enhance patient outcomes and support healthcare professionals across specialties - designed to be secure, interoperable, and human‑in‑the‑loop.
           </p>
 
-          <div className="flex flex-wrap justify-center gap-6 ">
-            <div className="flex items-center text-muted-foreground">
+          <div className="flex flex-wrap justify-center gap-6 animate-fade-in-delay-2">
+            <div className="flex items-center text-muted-foreground hover:text-blue-500 transition-colors duration-300">
               <Target className="h-5 w-5 text-blue-500 mr-2" />
               <span>AI-Powered Solutions</span>
             </div>
-            <div className="flex items-center text-muted-foreground">
+            <div className="flex items-center text-muted-foreground hover:text-teal-500 transition-colors duration-300">
               <Zap className="h-5 w-5 text-teal-500 mr-2" />
               <span>Universal Platform</span>
             </div>
-            <div className="flex items-center text-muted-foreground">
+            <div className="flex items-center text-muted-foreground hover:text-purple-500 transition-colors duration-300">
               <Shield className="h-5 w-5 text-purple-500 mr-2" />
               <span>Evidence-Based</span>
             </div>
@@ -95,9 +137,9 @@ const About = () => {
       {/* What We Do */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-secondary/20 to-secondary/40">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-16 scroll-animate opacity-0 translate-y-8">
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-blue-500 to-teal-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-teal-500 to-purple-600 bg-clip-text text-transparent">
                 What We Do
               </span>
             </h2>
@@ -107,7 +149,7 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group relative">
+            <div className="group relative scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.1s' }}>
               <div className="bg-background rounded-3xl p-8 shadow-lg border hover:shadow-2xl transition-all duration-500 h-full group-hover:-translate-y-2">
                 <div className="w-20 h-20 bg-gradient-to-r from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
                   <Brain className="h-10 w-10 text-white" />
@@ -121,7 +163,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="group relative">
+            <div className="group relative scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.2s' }}>
               <div className="bg-background rounded-3xl p-8 shadow-lg border hover:shadow-2xl transition-all duration-500 h-full group-hover:-translate-y-2">
                 <div className="w-20 h-20 bg-gradient-to-r from-teal-500 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
                   <Activity className="h-10 w-10 text-white" />
@@ -135,7 +177,7 @@ const About = () => {
               </div>
             </div>
             
-            <div className="group relative">
+            <div className="group relative scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.3s' }}>
               <div className="bg-background rounded-3xl p-8 shadow-lg border hover:shadow-2xl transition-all duration-500 h-full group-hover:-translate-y-2">
                 <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-500">
                   <Heart className="h-10 w-10 text-white" />
@@ -233,8 +275,41 @@ const About = () => {
       
       <style>{`
         @keyframes fade-in {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
+          from { 
+            opacity: 0; 
+            transform: translateY(40px) scale(0.95); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0) scale(1); 
+          }
+        }
+        
+        @keyframes slide-in-left {
+          from { 
+            opacity: 0; 
+            transform: translateX(-50px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateX(0); 
+          }
+        }
+        
+        @keyframes slide-in-right {
+          from { 
+            opacity: 0; 
+            transform: translateX(50px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateX(0); 
+          }
+        }
+        
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-10px) rotate(2deg); }
         }
         
         @keyframes spin-slow {
@@ -247,11 +322,84 @@ const About = () => {
           to { transform: rotate(0deg); }
         }
         
-        .animate-fade-in { animation: fade-in 1.2s ease-out; }
-        .animate-fade-in-delay { animation: fade-in 1.2s ease-out 0.4s both; }
-        .animate-fade-in-delay-2 { animation: fade-in 1.2s ease-out 0.8s both; }
-        .animate-spin-slow { animation: spin-slow 30s linear infinite; }
-        .animate-spin-reverse { animation: spin-reverse 25s linear infinite; }
+        .animate-fade-in { 
+          animation: fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+        }
+        .animate-fade-in-delay { 
+          animation: fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s both; 
+        }
+        .animate-fade-in-delay-2 { 
+          animation: fade-in 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both; 
+        }
+        .animate-slide-left { 
+          animation: slide-in-left 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both; 
+        }
+        .animate-slide-right { 
+          animation: slide-in-right 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both; 
+        }
+        .animate-float { 
+          animation: float 6s ease-in-out infinite; 
+        }
+        .animate-spin-slow { 
+          animation: spin-slow 30s linear infinite; 
+        }
+        .animate-spin-reverse { 
+          animation: spin-reverse 25s linear infinite; 
+        }
+        
+        /* Scroll-triggered animations */
+        .scroll-animate {
+          transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .animate-in-view {
+          opacity: 1 !important;
+          transform: translateY(0) !important;
+        }
+        
+        /* Staggered animation delays for scroll elements */
+        .scroll-animate:nth-child(1) { transition-delay: 0.1s; }
+        .scroll-animate:nth-child(2) { transition-delay: 0.2s; }
+        .scroll-animate:nth-child(3) { transition-delay: 0.3s; }
+        .scroll-animate:nth-child(4) { transition-delay: 0.4s; }
+        .scroll-animate:nth-child(5) { transition-delay: 0.5s; }
+        
+        @media (prefers-reduced-motion: no-preference) {
+          .group:hover .animate-bounce-gentle {
+            animation: bounce 1s ease-in-out;
+          }
+        }
+        
+        /* Alternative scroll animations */
+        @keyframes slide-up {
+          from { 
+            opacity: 0; 
+            transform: translateY(60px); 
+          }
+          to { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        
+        @keyframes scale-in {
+          from { 
+            opacity: 0; 
+            transform: scale(0.8); 
+          }
+          to { 
+            opacity: 1; 
+            transform: scale(1); 
+          }
+        }
+        
+        .animate-slide-up {
+          animation: slide-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        
+        .animate-scale-in {
+          animation: scale-in 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
         
         .bg-grid-pattern {
           background-image: radial-gradient(circle, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
@@ -261,6 +409,16 @@ const About = () => {
         .bg-dot-pattern {
           background-image: radial-gradient(circle, rgba(20, 184, 166, 0.1) 1px, transparent 1px);
           background-size: 24px 24px;
+        }
+        
+        /* Enhanced hover effects */
+        .card-hover {
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
       `}</style>
     </div>

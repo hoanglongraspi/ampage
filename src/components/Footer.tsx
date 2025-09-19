@@ -21,7 +21,7 @@ export const Footer = () => {
               <h3 className="text-xl font-bold text-black-500">
                 Auspex Medix
               </h3>
-              <p className="text-sm text-muted-foreground">Medical Technology Innovation</p>
+              <p className="text-sm text-muted-foreground">AI Foresight. Human Care</p>
             </div>
           </div>
 

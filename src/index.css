@@ -178,4 +178,21 @@
   .animate-fade-in-delay-3 {
     animation: fadeIn 1.2s ease-out 1.2s both;
   }
+  
+  /* Scroll-triggered animations */
+  .scroll-animate {
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .animate-in-view {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+  
+  /* Staggered animation delays for scroll elements */
+  .scroll-animate:nth-child(1) { transition-delay: 0.1s; }
+  .scroll-animate:nth-child(2) { transition-delay: 0.2s; }
+  .scroll-animate:nth-child(3) { transition-delay: 0.3s; }
+  .scroll-animate:nth-child(4) { transition-delay: 0.4s; }
+  .scroll-animate:nth-child(5) { transition-delay: 0.5s; }
 }

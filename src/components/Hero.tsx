@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowRight, Activity, Users, Stethoscope, ChevronDown, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,6 +9,38 @@ import {
 } from '@/components/ui/dropdown-menu';
 
 export const Hero = () => {
+  const observerRef = useRef<IntersectionObserver | null>(null);
+
+  useEffect(() => {
+    // Create intersection observer for scroll animations
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in-view');
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      }
+    );
+
+    // Small delay to ensure DOM is ready
+    const timeout = setTimeout(() => {
+      const elements = document.querySelectorAll('.scroll-animate');
+      elements.forEach((el) => observerRef.current?.observe(el));
+    }, 100);
+
+    // Cleanup observer on unmount
+    return () => {
+      clearTimeout(timeout);
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+      }
+    };
+  }, []);
 
   const externalLinks = [
     {
@@ -107,8 +139,8 @@ export const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             
             {/* Patients */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center scroll-animate opacity-0 translate-y-8">
+              <div className="w-24 h-24 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300">
                 <Activity className="h-12 w-12 text-blue-600 dark:text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Patients</h3>
@@ -119,8 +151,8 @@ export const Hero = () => {
             </div>
 
             {/* Healthcare Providers */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.2s' }}>
+              <div className="w-24 h-24 bg-teal-100 dark:bg-teal-900/30 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300">
                 <Stethoscope className="h-12 w-12 text-teal-600 dark:text-teal-400" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Healthcare Providers</h3>
@@ -131,8 +163,8 @@ export const Hero = () => {
             </div>
 
             {/* Researchers */}
-            <div className="text-center">
-              <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <div className="text-center scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.4s' }}>
+              <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6 hover:scale-110 transition-transform duration-300">
                 <Users className="h-12 w-12 text-green-600 dark:text-green-400" />
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-4">Researchers</h3>
@@ -142,6 +174,52 @@ export const Hero = () => {
               </p>
             </div>
 
+          </div>
+        </div>
+      </div>
+
+      {/* Collaborators */}
+      <div className="py-20 px-4 sm:px-6 lg:px-8 bg-background">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16 scroll-animate opacity-0 translate-y-8">
+            <h2 className="text-3xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-6">
+              Our Partners
+            </h2>
+          </div>
+          
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 lg:gap-16">
+            {/* NIH Logo */}
+            <div className="flex flex-col items-center group scroll-animate opacity-0 translate-y-8">
+              <div className="w-44 h-28 flex items-center justify-center p-3 rounded-lg hover:bg-secondary/30 transition-all duration-300 hover:scale-105">
+                <img 
+                  src="/nih-logo-use.png" 
+                  alt="National Institutes of Health"
+                  className="max-w-full max-h-full object-contain filter hover:brightness-110 transition-all duration-300"
+                />
+              </div>
+            </div>
+
+            {/* University at Buffalo Stacked Logo */}
+            <div className="flex flex-col items-center group scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.2s' }}>
+              <div className="w-44 h-28 flex items-center justify-center p-3 rounded-lg hover:bg-secondary/30 transition-all duration-300 hover:scale-105">
+                <img 
+                  src="/UB_Stacked.png" 
+                  alt="University at Buffalo"
+                  className="max-w-full max-h-full object-contain filter hover:brightness-110 transition-all duration-300"
+                />
+              </div>
+            </div>
+
+            {/* University at Buffalo CBLS Logo */}
+            <div className="flex flex-col items-center group scroll-animate opacity-0 translate-y-8" style={{ animationDelay: '0.4s' }}>
+              <div className="w-45 h-28 flex items-center justify-center p-3 rounded-lg hover:bg-secondary/30 transition-all duration-300 hover:scale-105">
+                <img 
+                  src="/UB_CBLS.avif" 
+                  alt="University at Buffalo Center for Biomedical & Life Sciences"
+                  className="max-w-full max-h-full object-contain filter hover:brightness-110 transition-all duration-300"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>

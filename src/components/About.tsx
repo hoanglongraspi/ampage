@@ -1,6 +1,6 @@
 import React from 'react';
 import { Award, Users, Target, Lightbulb, Heart, Stethoscope, Brain, Activity } from 'lucide-react';
-
+//Draft of About Page
 export const About = () => {
   const values = [
     {
