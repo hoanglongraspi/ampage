@@ -44,7 +44,7 @@ const App = () => (
             <Route path="/products/wound-healing-diabetic-care" element={<WoundHealingDiabeticCare />} />
             <Route path="/news" element={<News />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/FCOI" element={<FCOI />} />
+            {/* <Route path="/FCOI" element={<FCOI />} /> */}
 
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
