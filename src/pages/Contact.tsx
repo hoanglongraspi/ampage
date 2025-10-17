@@ -306,7 +306,7 @@ const Contact = () => {
                 <CardContent className="p-0">
                   <div className="relative h-80 rounded-lg overflow-hidden">
                     <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.112484583289!2d-78.78825492344654!3d42.9886577114789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d371b5e8b3f0b5b%3A0x1d8f5c0e6b8e2a4c!2s1576%20Sweet%20Home%20Rd%2C%20Buffalo%2C%20NY%2014228!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2925.112484583289!2d-78.78825492344654!3d42.9886577114789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d371b5e8b3f0b5b%3A0x1d8f5c0e6b8e2a4c!2s1576%20Sweet%20Home%20Rd%2C%20Buffalo%2C%20NY%14228-2710!5e0!3m2!1sen!2sus!4v1704067200000!5m2!1sen!2sus"
                       width="100%"
                       height="100%"
                       style={{ border: 0 }}

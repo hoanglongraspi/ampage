@@ -31,7 +31,10 @@ export const Collaborators = () => {
     }
   ];
 
-  // return (
+  return null; // Content moved to Hero component
+  
+  /* Original content commented out:
+  return (
   //   <section id="collaborators" className="py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black">
   //     <div className="max-w-7xl mx-auto">
   //       <div className="text-center mb-20">
@@ -87,4 +90,5 @@ export const Collaborators = () => {
   //     </div>
   //   </section>
   // );
+  */
 };

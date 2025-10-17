@@ -5,7 +5,7 @@ import { FileText } from 'lucide-react';
 
 export const Footer = () => {
   return (
-    <footer className="bg-background border-t border-border py-12 px-4 sm:px-6 lg:px-8">
+    <footer className="bg-background border-t border-border/20 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center space-y-6">
           {/* Company Logo and Name */}

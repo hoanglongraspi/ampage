@@ -4,6 +4,7 @@
 
 @layer base {
   :root {
+    /* Light Mode Colors */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
@@ -34,24 +35,19 @@
 
     --radius: 0.5rem;
 
+    /* Sidebar Colors */
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
+    /* Dark Mode Colors */
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
 
@@ -79,6 +75,8 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
+
+    /* Sidebar Colors Dark Mode */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -88,111 +86,180 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
-
+  
   body {
     @apply bg-background text-foreground;
   }
-
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  *::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Hide scrollbar for IE, Edge and Firefox */
-  * {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-  }
 }
 
-/* Hero Animation Keyframes */
-@keyframes slideUpFade {
-  0% {
+/* Scroll Animations */
+@keyframes fadeIn {
+  from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
-  100% {
+  to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-@keyframes subtleFloat {
-  0%, 100% {
-    transform: scale(1.05) translateY(0px);
-  }
-  50% {
-    transform: scale(1.05) translateY(-3px);
-  }
-}
-
-@keyframes fadeIn {
-  0% {
+@keyframes fadeInSimple {
+  from {
     opacity: 0;
   }
-  100% {
+  to {
     opacity: 1;
   }
 }
 
-@layer utilities {
-  .animate-slide-up-fade {
-    animation: slideUpFade 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  .animate-float {
-    animation: float 8s ease-in-out infinite;
-  }
-  
-  .animate-subtle-float {
-    animation: subtleFloat 30s ease-in-out infinite;
-  }
-  
-  .animate-fade-in {
-    animation: fadeIn 1.2s ease-out forwards;
-  }
-  
-  .animate-fade-in-delay {
-    animation: fadeIn 1.2s ease-out 0.4s both;
-  }
-  
-  .animate-fade-in-delay-2 {
-    animation: fadeIn 1.2s ease-out 0.8s both;
-  }
-  
-  .animate-fade-in-delay-3 {
-    animation: fadeIn 1.2s ease-out 1.2s both;
-  }
-  
-  /* Scroll-triggered animations */
-  .scroll-animate {
-    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .animate-in-view {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-  
-  /* Staggered animation delays for scroll elements */
-  .scroll-animate:nth-child(1) { transition-delay: 0.1s; }
-  .scroll-animate:nth-child(2) { transition-delay: 0.2s; }
-  .scroll-animate:nth-child(3) { transition-delay: 0.3s; }
-  .scroll-animate:nth-child(4) { transition-delay: 0.4s; }
-  .scroll-animate:nth-child(5) { transition-delay: 0.5s; }
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.scroll-animate.animate-in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero Animations */
+.animate-fade-in {
+  animation: fadeInSimple 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeInSimple 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeInSimple 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+/* Tiptap Editor Styles */
+.ProseMirror {
+  outline: none !important;
+  border: none !important;
+  min-height: 300px;
+}
+
+.ProseMirror:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Article Content Styles - Remove all outlines */
+.prose {
+  outline: none !important;
+}
+
+.prose * {
+  outline: none !important;
+  border: none !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  border: none !important;
+  outline: none !important;
+}
+
+.prose p,
+.prose ul,
+.prose ol,
+.prose blockquote {
+  border: none !important;
+  outline: none !important;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: hsl(var(--muted-foreground));
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.ProseMirror h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 0.67em 0;
+}
+
+.ProseMirror h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 0.75em 0;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  padding-left: 2em;
+  margin: 1em 0;
+}
+
+.ProseMirror ul {
+  list-style-type: disc;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+}
+
+.ProseMirror blockquote {
+  border-left: 3px solid hsl(var(--border));
+  padding-left: 1em;
+  margin: 1em 0;
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+.ProseMirror a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.dark .ProseMirror a {
+  color: hsl(var(--sidebar-ring));
+}
+
+.ProseMirror img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin: 1em 0;
+}
+
+.ProseMirror code {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-family: monospace;
+}
+
+.ProseMirror pre {
+  background-color: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  padding: 1em;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  border: 1px solid hsl(var(--border));
+}
+
+.ProseMirror pre code {
+  background: none;
+  padding: 0;
 }

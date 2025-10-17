@@ -1,22 +1,66 @@
-import React from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Calendar, User, ArrowRight, ExternalLink, TrendingUp, Award, Beaker } from 'lucide-react';
+import { Calendar, User, ArrowRight, ExternalLink, TrendingUp, Award, Beaker, Loader2 } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { useFirestoreRealtime, orderBy } from '@/hooks/useFirestore';
+import { NewsArticle } from '@/types/news';
+import { NewsPagination } from '@/components/NewsPagination';
+
+const ITEMS_PER_PAGE = 6;
 
 const News = () => {
-  const featuredNews = {
+  // Fetch news from Firebase in real-time
+  const { documents: allNews, loading, error } = useFirestoreRealtime<NewsArticle>(
+    'news',
+    [orderBy('date', 'desc')]
+  );
+
+  const [featuredNews, setFeaturedNews] = useState<NewsArticle | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  // Use all news articles
+  const filteredArticles = useMemo(() => {
+    if (!allNews || allNews.length === 0) return [];
+    return [...allNews];
+  }, [allNews]);
+
+  // Set featured article
+  useEffect(() => {
+    if (filteredArticles.length > 0) {
+      const featured = filteredArticles.find(article => article.featured) || filteredArticles[0];
+      setFeaturedNews(featured);
+    } else {
+      setFeaturedNews(null);
+    }
+  }, [filteredArticles]);
+
+  // Paginate articles (excluding featured)
+  const { paginatedArticles, totalPages } = useMemo(() => {
+    const articles = filteredArticles.filter(article => article.id !== featuredNews?.id);
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    
+    return {
+      paginatedArticles: articles.slice(startIndex, endIndex),
+      totalPages: Math.ceil(articles.length / ITEMS_PER_PAGE)
+    };
+  }, [filteredArticles, featuredNews, currentPage]);
+
+  // Fallback data for when Firebase is empty or loading
+  const fallbackFeaturedNews = {
     title: "Breakthrough in AI-Powered Speech Therapy Shows 85% Improvement in Patient Outcomes",
     excerpt: "Our latest clinical trial demonstrates significant improvements in speech-language pathology treatments using real-time ultrasound imaging combined with EEG monitoring.",
     date: "2024-01-15",
     author: "Dr. Sarah Chen, Research Director",
-    category: "Research",
+    category: "Research" as const,
     image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=800&h=400&fit=crop&crop=center",
     readTime: "5 min read"
   };
 
-  const newsArticles = [
+  const fallbackNewsArticles = [
     {
       title: "FDA Breakthrough Device Designation for Diabetic Foot Monitoring System",
       excerpt: "Our multispectral imaging technology receives FDA recognition for its potential to revolutionize diabetic foot care and prevent amputations.",
@@ -112,88 +156,119 @@ const News = () => {
     });
   };
 
+  // Display fallback data if Firebase is empty
+  const displayFeaturedNews = featuredNews || (allNews.length === 0 ? fallbackFeaturedNews : null);
+  const displayNewsArticles = paginatedArticles.length > 0 ? paginatedArticles : (allNews.length === 0 ? fallbackNewsArticles : []);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Header />
       
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-background">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h1 className="text-6xl md:text-7xl font-bold mb-8">
-              <span className="bg-gradient-to-r from-pink-400 to-violet-400 bg-clip-text text-transparent">
-                Latest News
-              </span>
+          <div className="text-center mb-12">
+            <h1 className="text-6xl md:text-7xl font-bold mb-8 text-blue-600 dark:text-blue-400">
+              Latest News
             </h1>
             <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
               Stay updated with the latest breakthroughs in medical technology and research from Auspex Medix LLC
             </p>
+            {!loading && allNews.length === 0 && (
+              <p className="text-sm text-muted-foreground mt-4">
+                💡 Showing sample data. Connect to Firebase to see live news.
+              </p>
+            )}
           </div>
 
+          {/* Loading State */}
+          {loading && (
+            <div className="flex justify-center items-center py-20">
+              <Loader2 className="h-12 w-12 animate-spin text-blue-600" />
+              <span className="ml-4 text-lg text-muted-foreground">Loading news...</span>
+            </div>
+          )}
+
+          {/* Error State */}
+          {error && (
+            <div className="text-center py-10 text-red-500">
+              <p>Error loading news: {error.message}</p>
+              <p className="text-sm text-muted-foreground mt-2">Showing sample data instead.</p>
+            </div>
+          )}
+
           {/* Featured News */}
-          <Card className="mb-16 bg-card/50 backdrop-blur-sm border-pink-500/30 overflow-hidden group hover:bg-card/70 transition-all duration-500">
-            <CardContent className="p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-                <div className="bg-gradient-to-br from-pink-600/20 to-violet-600/20 p-12 flex items-center">
-                  <div>
-                    <Badge className={`mb-4 ${getCategoryColor(featuredNews.category)}`}>
-                      {getCategoryIcon(featuredNews.category)}
-                      <span className="ml-2">{featuredNews.category}</span>
-                    </Badge>
-                    <h2 className="text-4xl font-bold text-foreground mb-6 group-hover:text-pink-400 transition-colors">
-                      {featuredNews.title}
-                    </h2>
-                    <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                      {featuredNews.excerpt}
-                    </p>
-                    <div className="flex items-center text-muted-foreground mb-6 space-x-6">
-                      <div className="flex items-center">
-                        <Calendar className="h-4 w-4 mr-2" />
-                        {formatDate(featuredNews.date)}
+          {!loading && displayFeaturedNews && (
+            <Link to={(displayFeaturedNews as any).id ? `/news/${(displayFeaturedNews as any).id}` : '#'}>
+              <Card className="mb-16 bg-card/50 backdrop-blur-sm border-blue-500/30 overflow-hidden group hover:bg-card/70 transition-all duration-500">
+                <CardContent className="p-0">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+                    <div className="bg-blue-600/10 p-12 flex items-center">
+                      <div>
+                        <Badge className={`mb-4 ${getCategoryColor(displayFeaturedNews.category)}`}>
+                          {getCategoryIcon(displayFeaturedNews.category)}
+                          <span className="ml-2">{displayFeaturedNews.category}</span>
+                        </Badge>
+                        <h2 className="text-4xl font-bold text-foreground mb-6 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {displayFeaturedNews.title}
+                        </h2>
+                        <p className="text-xl text-muted-foreground leading-relaxed mb-8">
+                          {displayFeaturedNews.excerpt}
+                        </p>
+                        <div className="flex items-center text-muted-foreground mb-6 space-x-6">
+                          <div className="flex items-center">
+                            <Calendar className="h-4 w-4 mr-2" />
+                            {formatDate(displayFeaturedNews.date)}
+                          </div>
+                          <div className="flex items-center">
+                            <User className="h-4 w-4 mr-2" />
+                            {displayFeaturedNews.author}
+                          </div>
+                          <span>{displayFeaturedNews.readTime}</span>
+                        </div>
+                        <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors cursor-pointer">
+                          <span className="font-medium text-lg">Read Full Article</span>
+                          <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        <User className="h-4 w-4 mr-2" />
-                        {featuredNews.author}
-                      </div>
-                      <span>{featuredNews.readTime}</span>
                     </div>
-                    <div className="flex items-center text-pink-400 group-hover:text-violet-400 transition-colors cursor-pointer">
-                      <span className="font-medium text-lg">Read Full Article</span>
-                      <ArrowRight className="ml-3 h-5 w-5 group-hover:translate-x-2 transition-transform" />
+                    <div className="relative overflow-hidden rounded-r-2xl">
+                      <img 
+                        src={displayFeaturedNews.image} 
+                        alt={displayFeaturedNews.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
+                      <div className="absolute bottom-8 left-8 right-8">
+                        <div className="flex items-center mb-4">
+                          <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center mr-4 shadow-2xl shadow-blue-600/40">
+                            <Beaker className="h-8 w-8 text-white" />
+                          </div>
+                          <p className="text-white font-semibold text-lg">Featured {displayFeaturedNews.category}</p>
+                        </div>
+                        <div className="flex space-x-2">
+                          <div className="w-3 h-3 bg-blue-400 rounded-full animate-pulse"></div>
+                          <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse delay-75"></div>
+                          <div className="w-3 h-3 bg-blue-600 rounded-full animate-pulse delay-150"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div className="relative overflow-hidden rounded-r-2xl">
-                  <img 
-                    src={featuredNews.image} 
-                    alt={featuredNews.title}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="flex items-center mb-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-violet-500 rounded-2xl flex items-center justify-center mr-4 shadow-2xl shadow-pink-500/30">
-                        <Beaker className="h-8 w-8 text-white" />
-                      </div>
-                      <p className="text-white font-semibold text-lg">Featured Research</p>
-                    </div>
-                    <div className="flex space-x-2">
-                      <div className="w-3 h-3 bg-pink-500 rounded-full animate-pulse"></div>
-                      <div className="w-3 h-3 bg-violet-500 rounded-full animate-pulse delay-75"></div>
-                      <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse delay-150"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            </Link>
+          )}
 
           {/* News Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {newsArticles.map((article, index) => (
-                             <Card 
-                 key={index}
-                 className="group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-500 hover:-translate-y-2 border hover:border-pink-500/50 cursor-pointer overflow-hidden"
-               >
+          {!loading && displayNewsArticles.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {displayNewsArticles.map((article, index) => (
+                <Link 
+                  key={article.id || index}
+                  to={article.id ? `/news/${article.id}` : '#'}
+                >
+                  <Card 
+                    className="group bg-card/50 backdrop-blur-sm hover:bg-card/70 transition-all duration-500 hover:-translate-y-2 border hover:border-blue-500/50 cursor-pointer overflow-hidden h-full"
+                  >
                  <div className="relative h-48 overflow-hidden">
                    <img 
                      src={article.image} 
@@ -214,7 +289,7 @@ const News = () => {
                    </div>
                  </div>
                  <CardHeader className="pb-4">
-                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-pink-400 transition-colors line-clamp-2">
+                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-2">
                      {article.title}
                    </h3>
                  </CardHeader>
@@ -234,22 +309,26 @@ const News = () => {
                       <User className="h-3 w-3 mr-1" />
                       {article.author}
                     </div>
-                    <div className="flex items-center text-pink-400 group-hover:text-violet-400 transition-colors">
+                    <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
                       <span className="font-medium text-sm">Read More</span>
                       <ArrowRight className="ml-2 h-3 w-3 group-hover:translate-x-1 transition-transform" />
                     </div>
                   </div>
                 </CardContent>
-              </Card>
-            ))}
-          </div>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          )}
 
-          {/* Load More */}
-          <div className="text-center mt-16">
-            <button className="bg-gradient-to-r from-pink-500 to-violet-500 hover:from-pink-600 hover:to-violet-600 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105">
-              Load More Articles
-            </button>
-          </div>
+          {/* Pagination */}
+          {!loading && allNews.length > 0 && paginatedArticles.length > 0 && (
+            <NewsPagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
         </div>
       </section>
       

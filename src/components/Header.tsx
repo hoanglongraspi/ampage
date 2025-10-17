@@ -31,7 +31,7 @@ export const Header = () => {
   ];
 
   return (
-    <header className="fixed top-0 w-full bg-background/90 backdrop-blur-xl shadow-lg z-50 border-b border-primary/20">
+    <header className="fixed top-0 w-full bg-background/90 backdrop-blur-xl shadow-lg z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <Link to="/" className="flex items-center space-x-3">
@@ -77,7 +77,7 @@ export const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent 
                 align="start" 
-                className="w-48 bg-background border border-border shadow-lg rounded-lg"
+                className="w-48 bg-background/95 backdrop-blur-md border border-border/20 shadow-lg rounded-lg"
               >
                 {products.map((product) => (
                   <DropdownMenuItem key={product.name} asChild>
@@ -115,7 +115,7 @@ export const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden py-4 border-t border-primary/20">
+          <div className="md:hidden py-4">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
@@ -144,7 +144,7 @@ export const Header = () => {
                 </button>
                 
                 {isMobileProductsOpen && (
-                  <div className="pl-4 space-y-2 border-l-2 border-border">
+                  <div className="pl-4 space-y-2 border-l-2 border-border/30">
                     {products.map((product) => (
                       <a
                         key={product.name}
