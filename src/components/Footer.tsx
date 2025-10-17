@@ -26,7 +26,7 @@ export const Footer = () => {
           </div>
 
           {/* FCOI Navigation Button */}
-          <div className="flex justify-center">
+          {/* <div className="flex justify-center">
             <Button 
               asChild 
               variant="outline"
@@ -38,7 +38,7 @@ export const Footer = () => {
                 Financial Conflict of Interest Policy
               </Link>
             </Button>
-          </div>
+          </div> */}
 
           {/* Copyright */}
           <p className="text-muted-foreground text-sm">

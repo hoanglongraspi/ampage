@@ -36,6 +36,7 @@ const App = () => (
       enableSystem={false}
       disableTransitionOnChange
     >
+<<<<<<< HEAD
       <AuthProvider>
         <TooltipProvider>
           <Toaster />
@@ -78,6 +79,24 @@ const App = () => (
               
               <Route path="/contact" element={<Contact />} />
               <Route path="/FCOI" element={<FCOI />} />
+=======
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/products/speech-language-pathology" element={<SpeechLanguagePathology />} />
+            <Route path="/products/physical-occupational-therapy" element={<PhysicalOccupationalTherapy />} />
+            <Route path="/products/audiology" element={<Audiology />} />
+            <Route path="/products/dentistry" element={<Dentistry />} />
+            <Route path="/products/wound-healing-diabetic-care" element={<WoundHealingDiabeticCare />} />
+            <Route path="/news" element={<News />} />
+            <Route path="/contact" element={<Contact />} />
+            {/* <Route path="/FCOI" element={<FCOI />} /> */}
+>>>>>>> f1cfa7ef21e2e87816c979051a7c4c384fc038e1
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
