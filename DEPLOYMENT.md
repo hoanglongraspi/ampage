@@ -91,14 +91,12 @@ docker run -d -p 8080:80 --name auspex-medix-app auspex-medix-vision
 ### PDF Support
 - Dedicated handling for PDF files
 - Proper Content-Type headers
-- Inline display configuration for FCOI PDF
 
 ## Accessing the Application
 
 Once deployed, the application will be available at:
 
 - **Main Site**: http://localhost (or your configured domain)
-- **FCOI Policy**: http://localhost/FCOI
 - **Health Check**: http://localhost/health
 
 ## Monitoring

@@ -1,10 +1,10 @@
-# Auspex Medix LLC - Medical Technology Platform
+# Auspex Medix - Medical Technology Platform
 
-A React TypeScript application for Auspex Medix LLC, showcasing innovative medical technologies across specialized therapeutic areas.
+A React TypeScript application for Auspex Medix, showcasing innovative medical technologies across specialized therapeutic areas.
 
-## About Auspex Medix LLC
+## About Auspex Medix
 
-Auspex Medix LLC is a medical technology company specializing in five therapeutic areas:
+Auspex Medix is a medical technology company specializing in five therapeutic areas:
 - **Physical & Occupational Therapy (PT/OT)** - Mobile Rehabilitation, Motion Analysis, App-based Therapy Tools
 - **Audiology** - Audio Processing, Vestibular Diagnostics, EEG Integration
 - **Wound Healing & Diabetic Foot Care** - Multispectral Imaging (MSI), mmWave Imaging
@@ -100,11 +100,11 @@ src/
 
 ## License
 
-This project is proprietary to Auspex Medix LLC. All rights reserved.
+This project is proprietary to Auspex Medix. All rights reserved.
 
 ## Contact
 
-**Auspex Medix LLC**
+**Auspex Medix**
 - Email: info@auspexmedix.com
 - Address: 1576 Sweet Home Rd, Buffalo, NY 14228, United States
 

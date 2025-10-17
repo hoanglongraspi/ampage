@@ -313,7 +313,7 @@ const Contact = () => {
                       allowFullScreen
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Auspex Medix LLC Location - 1576 Sweet Home Rd, Buffalo, NY 14228-2710"
+                      title="Auspex Medix Location - 1576 Sweet Home Rd, Buffalo, NY 14228-2710"
                     ></iframe>
                   </div>
                 </CardContent>

@@ -25,7 +25,7 @@ const sampleNewsArticles: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>[] 
     excerpt: "Our multispectral imaging technology receives FDA recognition for its potential to revolutionize diabetic foot care and prevent amputations.",
     content: "The FDA has granted Breakthrough Device Designation to our innovative multispectral imaging system for early detection of diabetic foot complications. This recognition accelerates the path to market for technology that could save thousands of limbs annually...",
     date: "2024-01-10",
-    author: "Auspex Medix LLC Team",
+    author: "Auspex Medix Team",
     category: "Regulatory",
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=250&fit=crop&crop=center",
     readTime: "3 min read",
@@ -35,7 +35,7 @@ const sampleNewsArticles: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>[] 
   {
     title: "Partnership with Johns Hopkins for Advanced Audiology Research",
     excerpt: "Collaborative study on EEG-integrated hearing systems shows promising results for patients with complex auditory processing disorders.",
-    content: "Auspex Medix LLC is proud to announce a strategic partnership with Johns Hopkins University to advance research in audiology and hearing science. Our collaborative study focuses on integrating EEG monitoring with advanced hearing systems...",
+    content: "Auspex Medix is proud to announce a strategic partnership with Johns Hopkins University to advance research in audiology and hearing science. Our collaborative study focuses on integrating EEG monitoring with advanced hearing systems...",
     date: "2024-01-08",
     author: "Dr. Michael Rodriguez",
     category: "Partnership",
@@ -71,7 +71,7 @@ const sampleNewsArticles: Omit<NewsArticle, 'id' | 'createdAt' | 'updatedAt'>[] 
   {
     title: "Wound Healing Technology Wins Innovation Award at MedTech Summit",
     excerpt: "Our mmWave imaging solution for chronic wound assessment receives recognition at the premier medical technology conference.",
-    content: "Auspex Medix LLC's mmWave imaging technology for chronic wound assessment has been honored with the Innovation Award at the 2023 MedTech Summit. This recognition highlights the transformative potential of our non-invasive imaging solution...",
+    content: "Auspex Medix's mmWave imaging technology for chronic wound assessment has been honored with the Innovation Award at the 2023 MedTech Summit. This recognition highlights the transformative potential of our non-invasive imaging solution...",
     date: "2023-12-28",
     author: "Innovation Team",
     category: "Awards",

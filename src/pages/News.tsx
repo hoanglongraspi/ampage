@@ -65,7 +65,7 @@ const News = () => {
       title: "FDA Breakthrough Device Designation for Diabetic Foot Monitoring System",
       excerpt: "Our multispectral imaging technology receives FDA recognition for its potential to revolutionize diabetic foot care and prevent amputations.",
       date: "2024-01-10",
-      author: "Auspex Medix LLC Team",
+      author: "Auspex Medix Team",
       category: "Regulatory",
       readTime: "3 min read",
       featured: true,
@@ -171,7 +171,7 @@ const News = () => {
               Latest News
             </h1>
             <p className="text-2xl text-muted-foreground max-w-4xl mx-auto">
-              Stay updated with the latest breakthroughs in medical technology and research from Auspex Medix LLC
+              Stay updated with the latest breakthroughs in medical technology and research from Auspex Medix
             </p>
             {!loading && allNews.length === 0 && (
               <p className="text-sm text-muted-foreground mt-4">
