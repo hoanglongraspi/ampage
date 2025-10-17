@@ -1,6 +1,8 @@
 import React from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { useUTMTracking } from '@/hooks/useUTMTracking';
+import { trackProductInterest, trackOutboundLink } from '@/lib/umami';
 import { Activity, Volume2, Scan, Mic, Smile, ExternalLink, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import {
@@ -12,6 +14,20 @@ import {
 import { Button } from '@/components/ui/button';
 
 const Products = () => {
+  const { getUTMParams } = useUTMTracking();
+  
+  const handleExternalLinkClick = (name: string, url: string) => {
+    const utmParams = getUTMParams();
+    trackOutboundLink(url, name);
+    trackProductInterest(name, utmParams || undefined);
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+  
+  const handleProductClick = (productName: string) => {
+    const utmParams = getUTMParams();
+    trackProductInterest(productName, utmParams || undefined);
+  };
+  
   const externalLinks = [
     {
       name: "mRehab",
@@ -104,7 +120,7 @@ const Products = () => {
                   <DropdownMenuItem 
                     key={index}
                     className="cursor-pointer hover:bg-secondary/50 rounded-lg p-3 transition-colors duration-200"
-                    onClick={() => window.open(link.url, '_blank', 'noopener,noreferrer')}
+                    onClick={() => handleExternalLinkClick(link.name, link.url)}
                   >
                     <div className="flex items-center justify-between w-full">
                       <span className="text-foreground font-medium">{link.name}</span>
@@ -123,7 +139,11 @@ const Products = () => {
               {products.slice(0, 2).map((product, index) => (
                 <div key={index} className="w-full sm:w-96 max-w-sm">
                   {product.available ? (
-                    <Link to={product.route} className="block group hover:scale-105 transition-transform duration-300 cursor-pointer h-full">
+                    <Link 
+                      to={product.route} 
+                      onClick={() => handleProductClick(product.title)}
+                      className="block group hover:scale-105 transition-transform duration-300 cursor-pointer h-full"
+                    >
                       <div className="bg-background border rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                         <div className={`w-20 h-20 bg-gradient-to-r ${product.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
                           <product.icon className="h-10 w-10 text-white" />
@@ -161,7 +181,11 @@ const Products = () => {
               {products.slice(2, 5).map((product, index) => (
                 <div key={index + 2} className="w-full sm:w-80 max-w-sm">
                   {product.available ? (
-                    <Link to={product.route} className="block group hover:scale-105 transition-transform duration-300 cursor-pointer h-full">
+                    <Link 
+                      to={product.route} 
+                      onClick={() => handleProductClick(product.title)}
+                      className="block group hover:scale-105 transition-transform duration-300 cursor-pointer h-full"
+                    >
                       <div className="bg-background border rounded-2xl p-8 text-center hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                         <div className={`w-20 h-20 bg-gradient-to-r ${product.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300`}>
                           <product.icon className="h-10 w-10 text-white" />

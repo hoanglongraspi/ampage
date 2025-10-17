@@ -56,6 +56,33 @@ npm run dev
 - `npm run lint` - Run ESLint
 - `npm run preview` - Preview production build
 
+## Marketing & Analytics
+
+### UTM Tracking
+The application includes comprehensive UTM parameter tracking for marketing campaigns. UTM parameters are automatically captured from URLs and stored for analytics.
+
+**Example URLs:**
+```
+https://auspexmedix.com/?utm_source=google&utm_medium=cpc&utm_campaign=fall2024
+https://auspexmedix.com/contact?utm_source=newsletter&utm_medium=email&utm_campaign=product_launch
+```
+
+For detailed information about UTM tracking, see [UTM_TRACKING_GUIDE.md](./UTM_TRACKING_GUIDE.md)
+
+**Key Features:**
+- Automatic capture of all UTM parameters
+- Session and persistent storage
+- Integration with contact form submissions
+- Landing page and timestamp tracking
+- Debug component for development
+
+**Supported Parameters:**
+- `utm_source` - Traffic source (e.g., google, facebook, newsletter)
+- `utm_medium` - Marketing medium (e.g., cpc, email, social)
+- `utm_campaign` - Campaign name (e.g., product_launch_2024)
+- `utm_term` - Paid search keywords (optional)
+- `utm_content` - Content variation (optional)
+
 ## Project Structure
 
 ```
@@ -89,6 +116,9 @@ src/
 - **Contact Integration**: Google Maps integration and contact forms
 - **Medical Focus**: Content and design tailored for healthcare industry
 - **Performance Optimized**: Built with Vite for fast development and production builds
+- **UTM Tracking**: Comprehensive marketing campaign tracking with automatic parameter capture
+- **Firebase Integration**: Backend services with Firestore and Authentication
+- **News Management**: Admin panel for creating and managing news articles
 
 ## Contributing
 

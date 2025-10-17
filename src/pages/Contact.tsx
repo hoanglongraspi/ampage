@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { useUTMTracking } from '@/hooks/useUTMTracking';
+import { trackContactSubmission, trackConversion } from '@/lib/umami';
 import { Mail, MapPin, Clock, Send, Building, Globe, Users, Phone, CheckCircle, XCircle, X } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 const Contact = () => {
+  const { getUTMParams } = useUTMTracking();
+  
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -34,6 +38,16 @@ const Contact = () => {
       formDataToSend.append('subject', `Auspex Medix Contact: ${formData.subject}`);
       formDataToSend.append('inquiry_type', formData.subject);
       formDataToSend.append('message', formData.message);
+      
+      // Include UTM parameters if available
+      const utmParams = getUTMParams();
+      if (utmParams) {
+        formDataToSend.append('utm_source', utmParams.utm_source || 'N/A');
+        formDataToSend.append('utm_medium', utmParams.utm_medium || 'N/A');
+        formDataToSend.append('utm_campaign', utmParams.utm_campaign || 'N/A');
+        formDataToSend.append('utm_term', utmParams.utm_term || 'N/A');
+        formDataToSend.append('utm_content', utmParams.utm_content || 'N/A');
+      }
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -43,6 +57,19 @@ const Contact = () => {
       const data = await response.json();
 
       if (data.success) {
+        // Track successful submission in Umami
+        trackContactSubmission({
+          subject: formData.subject,
+          utm_source: utmParams?.utm_source,
+          utm_medium: utmParams?.utm_medium,
+          utm_campaign: utmParams?.utm_campaign,
+          utm_term: utmParams?.utm_term,
+          utm_content: utmParams?.utm_content,
+        });
+        
+        // Track as conversion
+        trackConversion('contact_form', 1, utmParams || undefined);
+        
         setPopup({
           isOpen: true,
           type: 'success',
