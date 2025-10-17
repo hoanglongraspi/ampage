@@ -38,24 +38,34 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/products/speech-language-pathology" element={<SpeechLanguagePathology />} />
-            <Route path="/products/physical-occupational-therapy" element={<PhysicalOccupationalTherapy />} />
-            <Route path="/products/audiology" element={<Audiology />} />
-            <Route path="/products/dentistry" element={<Dentistry />} />
-            <Route path="/products/wound-healing-diabetic-care" element={<WoundHealingDiabeticCare />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/contact" element={<Contact />} />
+        <AuthProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/products/speech-language-pathology" element={<SpeechLanguagePathology />} />
+              <Route path="/products/physical-occupational-therapy" element={<PhysicalOccupationalTherapy />} />
+              <Route path="/products/audiology" element={<Audiology />} />
+              <Route path="/products/dentistry" element={<Dentistry />} />
+              <Route path="/products/wound-healing-diabetic-care" element={<WoundHealingDiabeticCare />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/news/:id" element={<NewsDetail />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/seed-data" element={<ProtectedRoute><SeedData /></ProtectedRoute>} />
+              
+              {/* Protected Admin Routes */}
+              <Route path="/news/admin" element={<ProtectedRoute><NewsAdmin /></ProtectedRoute>} />
+              <Route path="/news/edit" element={<ProtectedRoute><NewsEdit /></ProtectedRoute>} />
+              <Route path="/news/edit/:id" element={<ProtectedRoute><NewsEdit /></ProtectedRoute>} />
 
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-        </TooltipProvider>
+        </AuthProvider>
+      </TooltipProvider>
       
     </ThemeProvider>
   </QueryClientProvider>
