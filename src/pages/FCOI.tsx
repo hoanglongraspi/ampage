@@ -38,7 +38,7 @@ const FCOI: React.FC<FCOIProps> = () => {
               Financial Conflict of Interest Policy
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-6">
-              Auspex Medix LLC Financial Conflict of Interest Policy
+              Auspex Medix Financial Conflict of Interest Policy
             </p>
             
             {/* Action Buttons */}
@@ -117,7 +117,7 @@ const FCOI: React.FC<FCOIProps> = () => {
                   <CardHeader>
                     <CardTitle>Policy Overview</CardTitle>
                     <CardDescription>
-                      Key information about Auspex Medix LLC's Financial Conflict of Interest Policy
+                      Key information about Auspex Medix's Financial Conflict of Interest Policy
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="prose prose-sm max-w-none dark:prose-invert">
