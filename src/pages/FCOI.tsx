@@ -50,7 +50,7 @@ const FCOI: React.FC<FCOIProps> = () => {
                 className="flex items-center gap-2"
               >
                 <ExternalLink className="h-4 w-4" />
-                Open in New Tab
+                Full Screen View
               </Button>
             </div>
           </div>
