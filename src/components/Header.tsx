@@ -26,7 +26,7 @@ export const Header = () => {
   const products = [
     { name: 'Auspex mRehab', href: 'https://mrehab.agency/', external: true },
     { name: 'Auspex AudioSight', href: 'https://audiosight.agency/', external: true },
-    { name: 'Auspex OralScan', href: 'https://oralscan.health/', external: true },
+    { name: 'Auspex OralScan', href: 'https://oralscan.auspexmedix.com/', external: true },
     { name: 'Auspex SATE', href: 'https://sate.agency/', external: true },
     { name: 'Auspex OneScan', href: 'https://onescan.auspexmedix.com/', external: true },
   ];
