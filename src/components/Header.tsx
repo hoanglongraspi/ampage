@@ -31,6 +31,7 @@ export const Header = () => {
     { name: 'Auspex OneScan', href: 'https://onescan.auspexmedix.com/', external: true },
   ];
 
+  
   return (
     <header className="fixed top-0 w-full bg-background/90 backdrop-blur-xl shadow-lg z-50 border-b border-primary/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
